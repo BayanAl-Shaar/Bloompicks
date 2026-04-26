@@ -20,8 +20,8 @@ export function HomePage() {
   }, []);
 
   const featuredProducts = [
-    { id: '1', name: 'Premium Wireless Headphones', price: 89.99, originalPrice: 129.99, rating: 4.5, reviews: 234, inStock: true, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777195382/BLOOMPICKS-FLORA-GLOBE-EMS-Boyun-Gerdirme-ve-Yuz-Masaj-Aleti-Cilt-Sikilastirma-Cihazi-1_kp45by.webp' },
-    { id: '2', name: 'Designer Summer Dress', price: 59.99, originalPrice: 99.99, rating: 4.8, reviews: 512, inStock: true, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777197455/pro1_zodhoa.webp' },
+    { id: '1', name: 'FLORA GLOBE EMS Neck Lifting and Facial Massager Skin Tightening Device', price: 89.99, originalPrice: 129.99, rating: 4.5, reviews: 234, inStock: true, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777195382/BLOOMPICKS-FLORA-GLOBE-EMS-Boyun-Gerdirme-ve-Yuz-Masaj-Aleti-Cilt-Sikilastirma-Cihazi-1_kp45by.webp' },
+    { id: '2', name: 'Bloom Picks EN5 ANC Air Pro 2 Noise Cancelling Bluetooth Headphones – Compatible with All Phones', price: 59.99, originalPrice: 99.99, rating: 4.8, reviews: 512, inStock: true, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777197455/pro1_zodhoa.webp' },
     { id: '3', name: 'Smart Tablet Pro', price: 399.99, originalPrice: 499.99, rating: 4.7, reviews: 189, inStock: true, image: 'https://images.unsplash.com/photo-1775288487309-35c588890167?w=400' },
     { id: '4', name: 'Luxury Skincare Set', price: 79.99, originalPrice: 119.99, rating: 4.9, reviews: 421, inStock: true, image: 'https://images.unsplash.com/photo-1770717984645-3e86de003cc3?w=400' },
     { id: '5', name: 'Modern Table Lamp', price: 45.99, originalPrice: 69.99, rating: 4.6, reviews: 156, inStock: true, image: 'https://images.unsplash.com/photo-1531410691118-74e9fbc0f57f?w=400' },
