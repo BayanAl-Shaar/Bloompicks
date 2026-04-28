@@ -13,10 +13,10 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-white/30 shadow-sm">
       <div className="container mx-auto px-4">
         {/* Top bar */}
-        <div className="py-2 border-b border-white/20">
-          <div className="flex items-center justify-between text-sm">
-            <p className="text-[var(--muted-foreground)]">Welcome to Bloom Picks - Free Shipping on Orders Over $50!</p>
-            <div className="flex items-center gap-4">
+        <div className="py-1.5 sm:py-2 border-b border-white/20">
+          <div className="flex items-center justify-center sm:justify-between text-xs sm:text-sm">
+            <p className="text-[var(--muted-foreground)] text-center sm:text-left">Welcome to Bloom Picks - Free Shipping on Orders Over $50!</p>
+            <div className="hidden sm:flex items-center gap-4">
               <button className="text-[var(--muted-foreground)] hover:text-[var(--primary)] transition-colors">Track Order</button>
               <button className="text-[var(--muted-foreground)] hover:text-[var(--primary)] transition-colors">Help</button>
             </div>
@@ -83,14 +83,16 @@ export function Header() {
         {/* Navigation */}
         <nav className="hidden md:block py-3 border-t border-white/20">
           <ul className="flex items-center justify-center gap-8">
-            <li><Link to="/" className={`transition-colors ${location.pathname === '/' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Home</Link></li>
-            <li><Link to="/shop" className={`transition-colors ${location.pathname === '/shop' && !location.search ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Shop All</Link></li>
-            <li><Link to="/shop?category=fashion" className={`transition-colors ${location.pathname === '/shop' && location.search === '?category=fashion' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Fashion</Link></li>
-            <li><Link to="/shop?category=tech" className={`transition-colors ${location.pathname === '/shop' && location.search === '?category=tech' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Technology</Link></li>
-            <li><Link to="/shop?category=home" className={`transition-colors ${location.pathname === '/shop' && location.search === '?category=home' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Home & Decor</Link></li>
-            <li><Link to="/shop?category=beauty" className={`transition-colors ${location.pathname === '/shop' && location.search === '?category=beauty' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Personal Care</Link></li>
-            <li><Link to="/about" className={`transition-colors ${location.pathname === '/about' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>About Us</Link></li>
-            <li><Link to="/contact" className={`transition-colors ${location.pathname === '/contact' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Contact</Link></li>
+            <li><Link to="/shop" className={`transition-colors ${location.pathname === '/shop' && !location.search ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>All Products</Link></li>
+            <li><Link to="/shop?category=electronic" className={`transition-colors ${location.pathname === '/shop' && location.search === '?category=electronic' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Electronic</Link></li>
+            <li><Link to="/shop?category=male" className={`transition-colors ${location.pathname === '/shop' && location.search === '?category=male' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Male</Link></li>
+            <li><Link to="/shop?category=home-furniture" className={`transition-colors ${location.pathname === '/shop' && location.search === '?category=home-furniture' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Home & Furniture</Link></li>
+            <li><Link to="/shop?category=woman" className={`transition-colors ${location.pathname === '/shop' && location.search === '?category=woman' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Woman</Link></li>
+            <li><Link to="/shop?category=sports-outdoors" className={`transition-colors ${location.pathname === '/shop' && location.search === '?category=sports-outdoors' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Sports & Outdoors</Link></li>
+            <li><Link to="/shop?category=supermarket" className={`transition-colors ${location.pathname === '/shop' && location.search === '?category=supermarket' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Supermarket</Link></li>
+            <li><Link to="/about" className={`block py-2 transition-colors ${location.pathname === '/about' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>About Us</Link></li>
+            <li><Link to="/contact" className={`block py-2 transition-colors ${location.pathname === '/contact' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Contact</Link></li>
+            <li><Link to="/product/conversion" className={`transition-colors ${location.pathname === '/product/conversion' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>New Product Page</Link></li>
           </ul>
         </nav>
 
@@ -113,6 +115,7 @@ export function Header() {
               <li><Link to="/shop?category=beauty" className={`block py-2 transition-colors ${location.pathname === '/shop' && location.search === '?category=beauty' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Personal Care</Link></li>
               <li><Link to="/about" className={`block py-2 transition-colors ${location.pathname === '/about' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>About Us</Link></li>
               <li><Link to="/contact" className={`block py-2 transition-colors ${location.pathname === '/contact' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Contact</Link></li>
+              <li><Link to="/product/conversion" className={`block py-2 transition-colors ${location.pathname === '/product/conversion' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>New Product Page</Link></li>
             </ul>
           </div>
         )}

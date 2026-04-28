@@ -27,7 +27,7 @@ export function ReturnProcessPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50 py-12">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-[1320px]">
         <div className="text-center mb-12">
           <h1 className="mb-3">Return Process</h1>
           <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">

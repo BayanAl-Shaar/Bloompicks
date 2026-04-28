@@ -5,15 +5,15 @@ import { Link } from 'react-router';
 
 export function FavoritesPage() {
   const favorites = [
-    { id: '1', name: 'Premium Wireless Headphones', price: 89.99, originalPrice: 129.99, rating: 4.5, reviews: 234, inStock: true, image: 'https://images.unsplash.com/photo-1738520420654-87cd2ad005d0?w=400' },
-    { id: '3', name: 'Smart Tablet Pro', price: 399.99, originalPrice: 499.99, rating: 4.7, reviews: 189, inStock: true, image: 'https://images.unsplash.com/photo-1775288487309-35c588890167?w=400' },
-    { id: '4', name: 'Luxury Skincare Set', price: 79.99, originalPrice: 119.99, rating: 4.9, reviews: 421, inStock: true, image: 'https://images.unsplash.com/photo-1770717984645-3e86de003cc3?w=400' },
-    { id: '5', name: 'Modern Table Lamp', price: 45.99, originalPrice: 69.99, rating: 4.6, reviews: 156, inStock: true, image: 'https://images.unsplash.com/photo-1531410691118-74e9fbc0f57f?w=400' },
+    { id: '1', name: 'Erkek Comfort Flex Pantolon', price: 89.99, originalPrice: 129.99, rating: 4.5, reviews: 234, inStock: true, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287619/9_c7qp8t.webp' },
+    { id: '3', name: 'Masaüstü İçecek Dağıtıcı Dispenseri Pratik Kola Sebili', price: 399.99, originalPrice: 499.99, rating: 4.7, reviews: 189, inStock: true, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287619/11_hwrwwt.webp' },
+    { id: '4', name: 'Bloom Picks EN7 ANC 4. Nesil Gürültü Engelleyici Bluetooth Kulaklık - K2 Çipli iOS & Android Uyumlu', price: 79.99, originalPrice: 119.99, rating: 4.9, reviews: 421, inStock: true, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287407/6_os6iro.webp' },
+    { id: '5', name: 'BLOOMPİCKS Dahili Kablolu 10000mAh 22,5W Hızlı Şarj Powerbank – Type-C & iPhone Uyumlu – LED Ekranlı', price: 45.99, originalPrice: 69.99, rating: 4.6, reviews: 156, inStock: true, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287407/5_bwalwv.webp' },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50 py-8">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-[1320px]">
         <GlassCard className="mb-8">
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 rounded-full bg-gradient-to-r from-[#E87722] to-[#F59E0B] flex items-center justify-center">

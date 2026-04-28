@@ -5,6 +5,7 @@ import { HomePage } from './pages/HomePage';
 import { ShopPage } from './pages/ShopPage';
 import { ProductPage } from './pages/ProductPage';
 import { ProductPageSecond } from './pages/ProductPageSecond';
+import { ProductPageConversion } from './pages/ProductPageConversion';
 import { LoginPage } from './pages/LoginPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { AboutPage } from './pages/AboutPage';
@@ -21,6 +22,7 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
             <Route path="/product/2" element={<ProductPageSecond />} />
+            <Route path="/product/conversion" element={<ProductPageConversion />} />
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />

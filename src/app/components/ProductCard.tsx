@@ -11,9 +11,10 @@ interface ProductCardProps {
   rating: number;
   reviews: number;
   inStock: boolean;
+  category?: string;
 }
 
-export function ProductCard({ id, image, name, price, originalPrice, rating, reviews, inStock }: ProductCardProps) {
+export function ProductCard({ id, image, name, price, originalPrice, rating, reviews, inStock, category }: ProductCardProps) {
   const [isWishlisted, setIsWishlisted] = useState(false);
   const discount = originalPrice ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
 
@@ -54,6 +55,11 @@ export function ProductCard({ id, image, name, price, originalPrice, rating, rev
 
         {/* Product info */}
         <div className="p-4">
+          {category && (
+            <span className="inline-block px-2 py-0.5 mb-2 text-xs rounded-full bg-gradient-to-r from-[#E87722]/10 to-[#F59E0B]/10 text-[var(--primary)] border border-[var(--primary)]/20 capitalize">
+              {category.replace(/-/g, ' ')}
+            </span>
+          )}
           <Link to={`/product/${id}`} className="block">
             <h3 className="mb-2 line-clamp-2 hover:text-[var(--primary)] transition-colors">{name}</h3>
           </Link>

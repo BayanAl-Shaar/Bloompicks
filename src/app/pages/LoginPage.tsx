@@ -8,7 +8,7 @@ export function LoginPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50 flex items-center justify-center py-12">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-[1320px]">
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
           {/* Left Side - Image */}
           <div className="hidden lg:block">

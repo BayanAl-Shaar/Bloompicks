@@ -4,7 +4,7 @@ import { Sparkles, Target, Heart, Users } from 'lucide-react';
 export function AboutPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50 py-12">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-[1320px]">
         {/* Hero */}
         <div className="text-center mb-16">
           <h1 className="text-5xl mb-6 bg-gradient-to-r from-[#E87722] to-[#0B1F3F] bg-clip-text text-transparent">

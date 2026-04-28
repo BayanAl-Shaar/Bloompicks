@@ -1,7 +1,8 @@
 import { Link } from 'react-router';
 import { GlassCard } from '../components/GlassCard';
+import { HeroSlider } from '../components/HeroSlider';
 import { ProductCard } from '../components/ProductCard';
-import { ArrowRight, Sparkles, Truck, Shield, HeadphonesIcon, Star, Clock } from 'lucide-react';
+import { ArrowRight, Truck, Shield, HeadphonesIcon, Star, Clock } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export function HomePage() {
@@ -20,93 +21,73 @@ export function HomePage() {
   }, []);
 
   const featuredProducts = [
-    { id: '1', name: 'FLORA GLOBE EMS Neck Lifting and Facial Massager Skin Tightening Device', price: 89.99, originalPrice: 129.99, rating: 4.5, reviews: 234, inStock: true, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777195382/BLOOMPICKS-FLORA-GLOBE-EMS-Boyun-Gerdirme-ve-Yuz-Masaj-Aleti-Cilt-Sikilastirma-Cihazi-1_kp45by.webp' },
-    { id: '2', name: 'Bloom Picks EN5 ANC Air Pro 2 Noise Cancelling Bluetooth Headphones – Compatible with All Phones', price: 59.99, originalPrice: 99.99, rating: 4.8, reviews: 512, inStock: true, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777197455/pro1_zodhoa.webp' },
-    { id: '3', name: 'Smart Tablet Pro', price: 399.99, originalPrice: 499.99, rating: 4.7, reviews: 189, inStock: true, image: 'https://images.unsplash.com/photo-1775288487309-35c588890167?w=400' },
-    { id: '4', name: 'Luxury Skincare Set', price: 79.99, originalPrice: 119.99, rating: 4.9, reviews: 421, inStock: true, image: 'https://images.unsplash.com/photo-1770717984645-3e86de003cc3?w=400' },
-    { id: '5', name: 'Modern Table Lamp', price: 45.99, originalPrice: 69.99, rating: 4.6, reviews: 156, inStock: true, image: 'https://images.unsplash.com/photo-1531410691118-74e9fbc0f57f?w=400' },
-    { id: '6', name: 'Casual Fashion Jacket', price: 89.99, originalPrice: 149.99, rating: 4.7, reviews: 298, inStock: true, image: 'https://images.unsplash.com/photo-1551232864-3f0890e580d9?w=400' },
-    { id: '7', name: 'Smartphone Accessories Kit', price: 29.99, rating: 4.4, reviews: 176, inStock: true, image: 'https://images.unsplash.com/photo-1775809927436-e6659f35b83d?w=400' },
-    { id: '8', name: 'Minimalist Plant Pot', price: 24.99, rating: 4.5, reviews: 89, inStock: true, image: 'https://images.unsplash.com/photo-1621960144741-3935026f401d?w=400' },
+    { id: '1', name: 'FLORA GLOBE EMS Neck Lifting and Facial Massager Skin Tightening Device', price: 89.99, originalPrice: 129.99, rating: 4.5, reviews: 234, inStock: true, category: 'woman', image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777195382/BLOOMPICKS-FLORA-GLOBE-EMS-Boyun-Gerdirme-ve-Yuz-Masaj-Aleti-Cilt-Sikilastirma-Cihazi-1_kp45by.webp' },
+    { id: '2', name: 'Bloom Picks EN5 ANC Air Pro 2 Noise Cancelling Bluetooth Headphones – Compatible with All Phones', price: 59.99, originalPrice: 99.99, rating: 4.8, reviews: 512, inStock: true, category: 'electronic', image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777197455/pro1_zodhoa.webp' },
+    { id: '3', name: 'Bloom Picks Şarjlı Araç Süpürgesi - 2si 1 Arada Güçlü Vakum ve Hava Üfleme Kablosuz El Süpürgesi', price: 399.99, originalPrice: 499.99, rating: 4.7, reviews: 189, inStock: true, category: 'home-furniture', image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287406/3_ih83rp.webp' },
+    { id: '4', name: 'Bloom Picks 1080P Full HD Dual Lens Araç İçi Kamera - 170° Geniş Açı Gece Görüşlü Yol Kayıt Cihazı', price: 79.99, originalPrice: 119.99, rating: 4.9, reviews: 421, inStock: true, category: 'electronic', image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287407/4_dar3ux.webp' },
+    { id: '5', name: 'BLOOMPİCKS Dahili Kablolu 10000mAh 22,5W Hızlı Şarj Powerbank – Type-C & iPhone Uyumlu – LED Ekranlı', price: 45.99, originalPrice: 69.99, rating: 4.6, reviews: 156, inStock: true, category: 'electronic', image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287407/5_bwalwv.webp' },
+    { id: '6', name: 'Bloom Picks EN7 ANC 4. Nesil Gürültü Engelleyici Bluetooth Kulaklık - K2 Çipli iOS & Android Uyumlu', price: 89.99, originalPrice: 149.99, rating: 4.7, reviews: 298, inStock: true, category: 'electronic', image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287407/6_os6iro.webp' },
+    { id: '7', name: '380 mL Şık Tasarım Çift Katmanlı Paslanmaz Çelik Termos Bardak Sızdırmaz Sıcak-Soğuk Araç Uyumu', price: 29.99, rating: 4.4, reviews: 176, inStock: true, category: 'sports-outdoors', image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287407/7_paqssz.webp' },
+    { id: '8', name: '510 mL Şık Tasarım Çift Katmanlı Paslanmaz Çelik Termos Bardak Sızdırmaz Sıcak-Soğuk Araç Uyumu', price: 24.99, rating: 4.5, reviews: 89, inStock: true, category: 'home-furniture', image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287407/8_u2fgyt.webp' },
   ];
 
   const categories = [
-    { name: 'Fashion', icon: '👗', link: '/shop?category=fashion', gradient: 'from-pink-400 to-purple-500' },
-    { name: 'Technology', icon: '💻', link: '/shop?category=tech', gradient: 'from-blue-400 to-cyan-500' },
-    { name: 'Beauty', icon: '💄', link: '/shop?category=beauty', gradient: 'from-rose-400 to-pink-500' },
-    { name: 'Home Decor', icon: '🏠', link: '/shop?category=home', gradient: 'from-amber-400 to-orange-500' },
+    { name: 'Electronic', icon: '💻', link: '/shop?category=electronic', gradient: 'from-blue-400 to-cyan-500' },
+    { name: 'Male', icon: '👔', link: '/shop?category=male', gradient: 'from-indigo-400 to-blue-500' },
+    { name: 'Home & Furniture', icon: '🏠', link: '/shop?category=home-furniture', gradient: 'from-amber-400 to-orange-500' },
+    { name: 'Woman', icon: '👗', link: '/shop?category=woman', gradient: 'from-pink-400 to-purple-500' },
+    { name: 'Sports & Outdoors', icon: '⚽', link: '/shop?category=sports-outdoors', gradient: 'from-green-400 to-emerald-500' },
+    { name: 'Supermarket', icon: '🛒', link: '/shop?category=supermarket', gradient: 'from-yellow-400 to-orange-500' },
   ];
 
   const flashDeals = [
-    { id: 'fd1', name: 'Vintage Camera Collection', price: 149.99, originalPrice: 299.99, rating: 4.8, reviews: 67, inStock: true, image: 'https://images.unsplash.com/photo-1773501942861-a824c059afda?w=400' },
-    { id: 'fd2', name: 'Elegant Evening Wear', price: 99.99, originalPrice: 199.99, rating: 4.9, reviews: 143, inStock: true, image: 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=400' },
-    { id: 'fd3', name: 'Premium Skincare Bottle', price: 34.99, originalPrice: 59.99, rating: 4.7, reviews: 234, inStock: true, image: 'https://images.unsplash.com/photo-1703174319257-bbacb50fee9c?w=400' },
-    { id: 'fd4', name: 'Modern Wall Decor', price: 69.99, originalPrice: 129.99, rating: 4.6, reviews: 98, inStock: true, image: 'https://images.unsplash.com/photo-1608755035200-14b0832dff20?w=400' },
+    { id: 'fd1', name: 'Erkek Comfort Flex Pantolon', price: 149.99, originalPrice: 299.99, rating: 4.8, reviews: 67, inStock: true, category: 'male', image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287619/9_c7qp8t.webp' },
+    { id: 'fd2', name: 'Dayanıklı Metal Gövdeli Mobilya Eşya Taşıma ve Kaldırma Seti 150 KGa kadar', price: 99.99, originalPrice: 199.99, rating: 4.9, reviews: 143, inStock: true, category: 'home-furniture', image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287619/10_ek0b9n.webp' },
+    { id: 'fd3', name: 'Masaüstü İçecek Dağıtıcı Dispenseri Pratik Kola Sebili', price: 34.99, originalPrice: 59.99, rating: 4.7, reviews: 234, inStock: true, category: 'supermarket', image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287619/11_hwrwwt.webp' },
+    { id: 'fd4', name: 'Şeffaf Silikon Tampon Ped Seti 3 Boy Kendinden Yapışkanlı Çarpma Önleyici Sessiz Duvar Kapak Koruma', price: 69.99, originalPrice: 129.99, rating: 4.6, reviews: 98, inStock: true, category: 'home-furniture', image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287619/12_humgzd.webp' },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50">
-      {/* Hero Section */}
-      {/*<section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#E87722]/10 to-[#0B1F3F]/10"></div>
-        <div className="container mx-auto px-4 relative">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/70 backdrop-blur-lg border border-white/30 mb-6">
-                <Sparkles className="w-4 h-4 text-[var(--primary)]" />
-                <span className="text-sm">Spring Collection 2026</span>
-              </div>
-              <h1 className="text-5xl md:text-6xl mb-6 bg-gradient-to-r from-[#E87722] to-[#0B1F3F] bg-clip-text text-transparent">
-                Discover Trends That Bloom
-              </h1>
-              <p className="text-xl text-[var(--muted-foreground)] mb-8">
-                Shop the latest in fashion, tech, beauty, and home decor from around the world. Curated just for you.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  to="/shop"
-                  className="px-8 py-4 rounded-full bg-gradient-to-r from-[#E87722] to-[#F59E0B] text-white hover:shadow-xl transition-all flex items-center gap-2"
-                >
-                  Shop Now
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-                <Link
-                  to="/about"
-                  className="px-8 py-4 rounded-full bg-white/70 backdrop-blur-lg border border-white/30 hover:border-[var(--primary)] transition-all"
-                >
-                  Learn More
-                </Link>
-              </div>
-            </div>
-            <div className="relative">
-              <GlassCard className="p-8" hover>
-                <img
-                  src="https://images.unsplash.com/photo-1753161023962-665967602405?w=600"
-                  alt="Happy Shopping"
-                  className="rounded-xl w-full"
-                />
-              </GlassCard>
-              <div className="absolute -bottom-6 -left-6">
-                <GlassCard className="p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#E87722] to-[#F59E0B] flex items-center justify-center text-white">
-                      <Star className="w-6 h-6 fill-current" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-[var(--muted-foreground)]">Customer Rating</p>
-                      <p className="text-xl">4.9/5.0</p>
-                    </div>
-                  </div>
-                </GlassCard>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>*/}
+      {/* Hero Section Slider */}
+      <HeroSlider
+        images={[
+          {
+            src: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777284057/slider1-300x91_ksbvek.webp',
+            alt: 'Bloom Picks Slider 1',
+            caption: '',
+            subcaption: '',
+          },
+          {
+            src: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777284057/slider2-300x91_yfmxv2.webp',
+            alt: 'Bloom Picks Slider 2',
+            caption: '',
+            subcaption: '',
+          },
+          {
+            src: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777284058/slider3-300x91_yfr0x5.webp',
+            alt: 'Bloom Picks Slider 3',
+            caption: '',
+            subcaption: '',
+          },
+          {
+            src: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777284058/slider4-300x91_hgbefp.webp',
+            alt: 'Bloom Picks Slider 4',
+            caption: '',
+            subcaption: '',
+          },
+          {
+            src: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777284058/1_yv3oi7.webp',
+            alt: 'Bloom Picks Slider 5',
+            caption: '',
+            subcaption: '',
+          },
+        ]}
+      />
 
       {/* Featured Products */}
       <section className="py-12">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-[1320px]">
           <div className="text-center mb-12">
             <h2 className="mb-3">Featured Products</h2>
             <p className="text-[var(--muted-foreground)]">Hand-picked favorites from our collection</p>
@@ -130,7 +111,7 @@ export function HomePage() {
 
       {/* Categories */}
       <section className="py-12">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-[1320px]">
           <div className="text-center mb-12">
             <h2 className="mb-3">Shop by Category</h2>
             <p className="text-[var(--muted-foreground)]">Explore our curated collections</p>
@@ -152,7 +133,7 @@ export function HomePage() {
 
       {/* Flash Deals */}
       <section className="py-12">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-[1320px]">
           <GlassCard className="mb-8">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-4">
@@ -195,7 +176,7 @@ export function HomePage() {
 
       {/* Trust Badges */}
       <section className="py-12">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-[1320px]">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <GlassCard className="text-center">
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#E87722] to-[#F59E0B] flex items-center justify-center">
@@ -226,7 +207,7 @@ export function HomePage() {
 
       {/* Testimonials */}
       <section className="py-12">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-[1320px]">
           <div className="text-center mb-12">
             <h2 className="mb-3">What Our Customers Say</h2>
             <p className="text-[var(--muted-foreground)]">Join thousands of happy shoppers</p>

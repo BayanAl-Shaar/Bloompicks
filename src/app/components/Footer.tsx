@@ -7,19 +7,19 @@ export function Footer() {
     <footer className="relative bg-gradient-to-br from-[#0B1F3F] to-[#1E3A8A] text-white mt-20">
       <div className="absolute inset-0 bg-white/5 backdrop-blur-sm"></div>
 
-      <div className="relative container mx-auto px-4 py-12">
+      <div className="relative container mx-auto px-4 py-12 max-w-[1320px]">
         {/* Newsletter */}
         <div className="mb-12 p-8 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20">
           <div className="max-w-2xl mx-auto text-center">
             <h3 className="mb-2">Subscribe to Our Newsletter</h3>
             <p className="text-white/80 mb-6">Get the latest deals and exclusive offers delivered to your inbox!</p>
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               <input
                 type="email"
                 placeholder="Enter your email address"
                 className="flex-1 px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
               />
-              <button className="px-8 py-3 rounded-full bg-gradient-to-r from-[#E87722] to-[#F59E0B] hover:shadow-lg transition-all">
+              <button className="px-8 py-3 rounded-full bg-gradient-to-r from-[#E87722] to-[#F59E0B] hover:shadow-lg transition-all whitespace-nowrap">
                 Subscribe
               </button>
             </div>

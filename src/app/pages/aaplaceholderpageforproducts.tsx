@@ -2,28 +2,32 @@ import { useState } from 'react';
 import { useParams, Link } from 'react-router';
 import { GlassCard } from '../components/GlassCard';
 import { ProductCard } from '../components/ProductCard';
-import { Star, Heart, ShoppingCart, Truck, Shield, RefreshCw, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, Heart, ShoppingCart, Truck, Shield, RefreshCw, ChevronLeft, ChevronRight, Search } from 'lucide-react';
 
-export function ProductPage() {
+export function ProductPageSecond() {
   const { id } = useParams();
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState('M');
+  const [selectedColor, setSelectedColor] = useState('White');
   const [isWishlisted, setIsWishlisted] = useState(false);
 
   const product = {
-    id: id || '1',
-    name: 'BLOOMPICKS FLORA GLOBE EMS Neck Lifting and Facial Massager Skin Tightening Device',
-    price: 819.99,
+    id: id || '2',
+    name: 'Bloom Picks EN5 ANC Air Pro 2 Noise Cancelling Bluetooth Headphones – Compatible with All Phones',
+    price: 749.99,
     originalPrice: 850.0,
     rating: 4.8,
-    reviews: 234,
+    reviews: 0,
     inStock: true,
-    description: 'Developed for those who want to perform facial and neck treatments at home, this EMS microcurrent massage device combines the effect of professional care with comfort.',
+    description: 'The Bloom Picks EN5 ANC Air Pro 2 reduces external noise with its active noise cancellation feature, delivering clear and powerful sound. Its ergonomic design and stable Bluetooth connection make it ideal for everyday use and compatible with all iOS and Android devices.',
     images: [
-      'https://res.cloudinary.com/dpiip2agt/image/upload/v1777195382/BLOOMPICKS-FLORA-GLOBE-EMS-Boyun-Gerdirme-ve-Yuz-Masaj-Aleti-Cilt-Sikilastirma-Cihazi-1_kp45by.webp',
-      'https://res.cloudinary.com/dpiip2agt/image/upload/v1777195383/BLOOMPICKS-FLORA-GLOBE-EMS-Boyun-Gerdirme-ve-Yuz-Masaj-Aleti-Cilt-Sikilastirma-Cihazi-3_voo6ed.webp',
-      'https://res.cloudinary.com/dpiip2agt/image/upload/v1777195384/BLOOMPICKS-FLORA-GLOBE-EMS-Boyun-Gerdirme-ve-Yuz-Masaj-Aleti-Cilt-Sikilastirma-Cihazi-5_fmyhep.webp',
+      'https://res.cloudinary.com/dpiip2agt/image/upload/v1777197455/pro1_zodhoa.webp',
+      'https://res.cloudinary.com/dpiip2agt/image/upload/v1777197454/Frame-18_by0lhe.webp',
+      'https://res.cloudinary.com/dpiip2agt/image/upload/v1777197455/pro1_zodhoa.webp',
+      'https://res.cloudinary.com/dpiip2agt/image/upload/v1777197455/pro1_zodhoa.webp',
+      'https://res.cloudinary.com/dpiip2agt/image/upload/v1777197454/Frame-18_by0lhe.webp',
+      'https://res.cloudinary.com/dpiip2agt/image/upload/v1777197455/pro1_zodhoa.webp',
     ],
     features: [
       'EMS Microcurrent Technology for lifting and firming',
@@ -62,11 +66,11 @@ export function ProductPage() {
           <span>{product.name}</span>
         </div>
 
-        <div className="grid lg:grid-cols-[1fr_1.45fr_0.75fr] gap-12 mb-16">
+        <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 mb-16">
           {/* Product Images */}
-          <div className="lg:max-w-[520px] lg:mx-auto">
+          <div className="lg:mx-auto">
             <GlassCard className="mb-4">
-              <div className="relative aspect-[2/3] rounded-lg overflow-hidden bg-gray-100 mb-4">
+              <div className="relative aspect-[3/3] rounded-lg overflow-hidden bg-gray-100 mb-4">
                 <img
                   src={product.images[selectedImage]}
                   alt={product.name}
@@ -77,6 +81,14 @@ export function ProductPage() {
                     -{discount}%
                   </div>
                 )}
+                <button
+                  type="button"
+                  onClick={() => window.open(product.images[selectedImage], '_blank')}
+                  className="absolute right-4 top-4 p-2 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white transition-all"
+                  title="Open larger image"
+                >
+                  <Search className="w-5 h-5 text-[var(--primary)]" />
+                </button>
                 <button
                   onClick={() => setSelectedImage((selectedImage - 1 + product.images.length) % product.images.length)}
                   className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white transition-all"
@@ -92,13 +104,13 @@ export function ProductPage() {
               </div>
 
               {/* Thumbnail Gallery */}
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-6 gap-2">
                 {product.images.map((image, index) => (
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
-                    className={`aspect-[2/3] rounded-lg overflow-hidden border-2 transition-all ${
-                      selectedImage === index ? 'border-[var(--primary)]' : 'border-transparent hover:border-[var(--primary)]/50'
+                    className={`aspect-square rounded-lg overflow-hidden border-2 transition-all hover:scale-105 ${
+                      selectedImage === index ? 'border-[var(--primary)]' : 'border-transparent hover:border-[#E87722]'
                     }`}
                   >
                     <img src={image} alt={`${product.name} ${index + 1}`} className="w-full h-full object-cover" />
@@ -144,7 +156,7 @@ export function ProductPage() {
               </a>
 
               {/* Size Selection */}
-              {/*<div className="mb-6">
+              <div className="mb-6">
                 <h4 className="mb-3">Size</h4>
                 <div className="flex gap-3">
                   {['S', 'M', 'L', 'XL'].map((size) => (
@@ -161,7 +173,39 @@ export function ProductPage() {
                     </button>
                   ))}
                 </div>
-              </div>*/}
+              </div>
+
+              {/* Color Selection */}
+              <div className="mb-6">
+                <h4 className="mb-3">Color</h4>
+                <div className="flex gap-6">
+                  {[
+                    { name: 'White', color: '#fff', border: 'border-gray-300' },
+                    { name: 'Black', color: '#222', border: 'border-gray-700' },
+                    { name: 'Blue', color: '#3B82F6', border: 'border-blue-400' },
+                    { name: 'Pink', color: '#EC4899', border: 'border-pink-400' },
+                  ].map((col) => (
+                    <div key={col.name} className="flex flex-col items-center">
+                      <button
+                        onClick={() => setSelectedColor(col.name)}
+                        className={`w-14 h-14 rounded-full border-2 flex items-center justify-center transition-all focus:outline-none mb-1 ${
+                          selectedColor === col.name
+                            ? 'ring-2 ring-[var(--primary)] border-[var(--primary)] scale-110'
+                            : `${col.border} hover:border-[var(--primary)]`
+                        }`}
+                        title={col.name}
+                        aria-label={col.name}
+                      >
+                        <span
+                          className="block w-10 h-10 rounded-full"
+                          style={{ background: col.color, border: col.name === 'White' ? '1px solid #ccc' : 'none' }}
+                        ></span>
+                      </button>
+                      <span className={`text-xs mt-1 ${selectedColor === col.name ? 'font-semibold text-[var(--primary)]' : 'text-gray-500'}`}>{col.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
               {/* Quantity */}
               <div className="mb-6">
@@ -212,42 +256,20 @@ export function ProductPage() {
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div className="rounded-2xl border border-white/60 bg-white p-4 text-center">
-                    <p className="text-sm text-[var(--muted-foreground)]">Electronic</p>
-                    <p className="mt-2 font-semibold">Yes</p>
+                    <p className="text-sm text-[var(--muted-foreground)]">Warranty</p>
+                    <p className="mt-2 font-semibold">2 Years</p>
                   </div>
                   <div className="rounded-2xl border border-white/60 bg-white p-4 text-center">
-                    <p className="text-sm text-[var(--muted-foreground)]">Intended Use</p>
-                    <p className="mt-2 font-semibold">Firming</p>
+                    <p className="text-sm text-[var(--muted-foreground)]">Colour</p>
+                    <p className="mt-2 font-semibold">White</p>
                   </div>
                   <div className="rounded-2xl border border-white/60 bg-white p-4 text-center">
-                    <p className="text-sm text-[var(--muted-foreground)]">Anti-aging</p>
-                    <p className="mt-2 font-semibold">Yes</p>
+                    <p className="text-sm text-[var(--muted-foreground)]">Bluetooth Version</p>
+                    <p className="mt-2 font-semibold">5.0</p>
                   </div>
                   <div className="rounded-2xl border border-white/60 bg-white p-4 text-center">
                     <p className="text-sm text-[var(--muted-foreground)]">Origin</p>
-                    <p className="mt-2 font-semibold">CN</p>
-                  </div>
-                </div>
-              </div>
-            </GlassCard>
-          </div>
-
-          {/* Right Sidebar */}
-          <div className="space-y-6">
-            <GlassCard className="p-4">
-              <div className="space-y-3">
-                <div className="overflow-hidden rounded-3xl bg-white/80">
-                  <img src={product.images[1]} alt="Extra product view" className="w-full h-64 object-cover" />
-                </div>
-                <div className="grid grid-cols-1 gap-3">
-                  <div className="overflow-hidden rounded-3xl bg-white/80">
-                    <img src="https://res.cloudinary.com/dpiip2agt/image/upload/v1777195384/BLOOMPICKS-FLORA-GLOBE-EMS-Boyun-Gerdirme-ve-Yuz-Masaj-Aleti-Cilt-Sikilastirma-Cihazi-4_kmnuxt.webp" alt="Extra product view 1" className="w-full h-40 object-cover" />
-                  </div>
-                  <div className="overflow-hidden rounded-3xl bg-white/80">
-                    <img src="https://res.cloudinary.com/dpiip2agt/image/upload/v1777195384/BLOOMPICKS-FLORA-GLOBE-EMS-Boyun-Gerdirme-ve-Yuz-Masaj-Aleti-Cilt-Sikilastirma-Cihazi-7_rmhlwd.webp" alt="Extra product view 2" className="w-full h-40 object-cover" />
-                  </div>
-                  <div className="overflow-hidden rounded-3xl bg-white/80">
-                    <img src="https://res.cloudinary.com/dpiip2agt/image/upload/v1777195383/BLOOMPICKS-FLORA-GLOBE-EMS-Boyun-Gerdirme-ve-Yuz-Masaj-Aleti-Cilt-Sikilastirma-Cihazi-2_dkkfmi.webp" alt="Extra product view 3" className="w-full h-40 object-cover" />
+                    <p className="mt-2 font-semibold">Chinese</p>
                   </div>
                 </div>
               </div>
@@ -269,55 +291,23 @@ export function ProductPage() {
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <h3 className="mb-4 text-lg font-semibold">Explanation</h3>
-              <p className="mb-4 text-[var(--muted-foreground)]">BLOOMPICKS FLORA GLOBE EMS Neck Lifting and Facial Massager Skin Tightening Device is designed as a home beauty solution for wrinkles, sagging, and dull skin on the neck and face.</p>
-              <p className="mb-4 text-[var(--muted-foreground)]">Developed for those who want to perform facial and neck treatments at home, this EMS microcurrent massage device combines the effect of professional care with comfort.</p>
+              <p className="mb-4 text-[var(--muted-foreground)]">Bloom Picks EN5 ANC: Experience the Rhythm of Music Without Interruption! 🎧</p>
+              <p className="mb-4 text-[var(--muted-foreground)]">Get ready for a groundbreaking audio experience with our new generation EN5 ANC model, which combines technology and aesthetics. 100% compatible with all iOS and Android devices!</p>
               <div className="space-y-4">
                 <div>
-                  <h4 className="mb-2 font-semibold">💆‍♀️ EMS Microcurrent Technology</h4>
-                  <p className="text-[var(--muted-foreground)]">Electrical Muscle Stimulation (EMS) provides a lifting effect by activating the muscles beneath the skin. It tightens sagging skin, defines the jawline, and gives the skin a firm and taut appearance.</p>
-                </div>
-                <div>
-                  <h4 className="mb-2 font-semibold">🔥 45°C Heated Therapy</h4>
-                  <p className="text-[var(--muted-foreground)]">The constant temperature feature stimulates blood circulation, thus supporting collagen production. It provides effective tightening and skin rejuvenation, especially in the neck area.</p>
-                </div>
-                <div>
-                  <h4 className="mb-2 font-semibold">🌈 7-Color LED Light Technology</h4>
-                  <p className="text-[var(--muted-foreground)]">7 LED colors, each catering to different skin needs:</p>
-                  <ul className="mt-2 list-disc space-y-1 pl-5 text-[var(--muted-foreground)]">
-                    <li>🔴 Red: Supports collagen production.</li>
-                    <li>🔵 Blue: Soothes acne and balances oil production.</li>
-                    <li>🟢 Green: Evens skin tone and reduces redness.</li>
-                    <li>🟡 Yellow: Adds radiance to the skin and reduces tired appearance.</li>
-                    <li>🟣 Purple (Lilac): Offers rejuvenating and anti-acne effects.</li>
-                    <li>⚪ White: Brightens, firms, and evens out skin tone.</li>
-                    <li>🌊 Cyan: Soothing effect, gentle skin care.</li>
+                  <h4 className="mb-2 font-semibold">✨ Key Features:</h4>
+                  <ul className="mt-2 list-disc space-y-2 pl-5 text-[var(--muted-foreground)]">
+                    <li><span className="font-semibold">Advanced ANC (Noise Cancellation):</span> Silence the outside world and focus solely on your music.</li>
+                    <li><span className="font-semibold">Automatic Connection:</span> It connects within seconds of you opening the lid.</li>
+                    <li><span className="font-semibold">In-ear Sensor Technology:</span> Music pauses when you take the earbuds out and resumes from where it left off when you put them back in.</li>
+                    <li><span className="font-semibold">Personalization:</span> Give your headphones any name you want using the "Change Name" function.</li>
+                    <li><span className="font-semibold">Uninterrupted Power:</span> With this power bank-equipped charging case, you can have it with you all day long.</li>
+                    <li><span className="font-semibold">Ergonomic and Comfortable:</span> With 3 different ear tip sizes, they fit perfectly in your ear and won't cause discomfort during extended use.</li>
                   </ul>
                 </div>
                 <div>
-                  <p className="text-[var(--muted-foreground)]">It enhances the absorption of skincare products, allowing creams, serums, and masks to penetrate deeper for maximum benefit.</p>
-                </div>
-                <div>
-                  <h4 className="mb-2 font-semibold">Who is it suitable for?</h4>
-                  <p className="text-[var(--muted-foreground)]">Especially suitable for women aged 30 and over. With just 5-10 minutes of regular daily use, it provides noticeable firming, revitalization, and rejuvenation.</p>
-                </div>
-                <div>
-                  <h4 className="mb-2 font-semibold">👜 Portable and Easy to Use</h4>
-                  <p className="text-[var(--muted-foreground)]">Compact, lightweight, ergonomic, and USB rechargeable for convenient use at home, in the office, or while traveling.</p>
-                </div>
-                <div>
-                  <h4 className="mb-2 font-semibold">🎁 Package Contents</h4>
-                  <ul className="mt-2 list-disc space-y-1 pl-5 text-[var(--muted-foreground)]">
-                    <li>1 x EMS Massage Device</li>
-                    <li>1 x USB Charging Cable</li>
-                    <li>1 x User Manual</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="mb-2 font-semibold">📦 Additional Information</h4>
-                  <ul className="mt-2 list-disc space-y-1 pl-5 text-[var(--muted-foreground)]">
-                    <li>1 Year Warranty – Original Product</li>
-                    <li>CE certified, with importer warranty</li>
-                  </ul>
+                  <h4 className="mb-2 font-semibold">📦 Package Contents</h4>
+                  <p className="text-[var(--muted-foreground)]">1 x EN5 ANC Headset, Charging Case, 1m Type-C Charging Cable, Spare Ear Tips.</p>
                 </div>
               </div>
             </div>
