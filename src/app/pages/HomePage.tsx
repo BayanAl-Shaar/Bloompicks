@@ -53,31 +53,31 @@ export function HomePage() {
       <HeroSlider
         images={[
           {
-            src: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777284057/slider1-300x91_ksbvek.webp',
+            src: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777449202/slidertel1-scaled_vh328q.webp',
             alt: 'Bloom Picks Slider 1',
             caption: '',
             subcaption: '',
           },
           {
-            src: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777284057/slider2-300x91_yfmxv2.webp',
+            src: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777450232/slidertel2-scaled_krfqdl.webp',
             alt: 'Bloom Picks Slider 2',
             caption: '',
             subcaption: '',
           },
           {
-            src: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777284058/slider3-300x91_yfr0x5.webp',
+            src: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777450236/slidertel5-scaled_srsxyq.webp',
             alt: 'Bloom Picks Slider 3',
             caption: '',
             subcaption: '',
           },
           {
-            src: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777284058/slider4-300x91_hgbefp.webp',
+            src: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777450231/slidertel4-scaled_ps4x9m.webp',
             alt: 'Bloom Picks Slider 4',
             caption: '',
             subcaption: '',
           },
           {
-            src: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777284058/1_yv3oi7.webp',
+            src: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777450232/slidertel3-scaled_codokq.webp',
             alt: 'Bloom Picks Slider 5',
             caption: '',
             subcaption: '',

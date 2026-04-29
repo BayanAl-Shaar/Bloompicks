@@ -1,26 +1,7 @@
-# TODO: Make ProductPageConversion.tsx the Main Product Page
+# Slider Image Size Fix TODO
 
-Completed steps marked with [x]
-
-## Steps from Approved Plan
-
-### 1. [x] Update src/app/App.tsx
-
-- Replace `/product/:id` route to use ProductPageConversion ✓
-- Remove `/product/2` and `/product/conversion` routes ✓
-- Remove unused imports (ProductPage, ProductPageSecond) ✓
-
-### 2. [x] Update src/app/Header.tsx
-
-- Change "New Product Page" link from `/product/conversion` to `/product/3` ✓
-
-### 3. [x] Test Changes
-
-- Run dev server (`npm run dev` or `pnpm dev`) - User to verify
-- Verify ProductCard links → ProductPageConversion ✓ (routing updated)
-- Check `/product/1`, `/product/3` work ✓ (now uses ProductPageConversion)
-- Test Header nav ✓ (links to `/product/3`)
-
-### 4. [x] Complete Task
-
-- Changes implemented successfully
+- [x] 1. Create/update TODO.md for tracking
+- [x] 2. Edit src/app/components/HeroSlider.tsx: Add fixed height/aspect-ratio to img class for uniform slider image sizing (target 300x91 proportions)
+- [x] 2.1 Update height to 410px per feedback
+- [x] 3. Verify changes by running dev server (pnpm dev) and inspecting slider
+- [x] 4. Task complete: Slider images now uniform height (410px), all same size including image #1.

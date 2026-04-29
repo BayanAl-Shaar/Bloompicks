@@ -25,10 +25,10 @@ export function HeroSlider({ images }: HeroSliderProps) {
           </button>
 
           <div className="relative w-full">
-            <img
+              <img
               src={images[current].src}
               alt={images[current].alt}
-              className="rounded-[1.75rem] w-full h-auto object-contain shadow-lg"
+              className="rounded-[1.75rem] w-full h-[410px] object-cover shadow-lg"
             />
           </div>
 
