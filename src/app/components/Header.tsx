@@ -83,6 +83,7 @@ export function Header() {
         {/* Navigation */}
         <nav className="hidden md:block py-2 border-t border-white/20">
           <ul className="flex items-center justify-center gap-8">
+            <li><Link to="/" className="transition-colors text-[var(--primary)] underline">BloomPicks</Link></li>
             <li><Link to="/shop" className={`transition-colors ${location.pathname === '/shop' && !location.search ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>All Products</Link></li>
             <li><Link to="/shop?category=electronic" className={`transition-colors ${location.pathname === '/shop' && location.search === '?category=electronic' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Electronic</Link></li>
             <li><Link to="/shop?category=male" className={`transition-colors ${location.pathname === '/shop' && location.search === '?category=male' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Male</Link></li>
@@ -92,7 +93,7 @@ export function Header() {
             <li><Link to="/shop?category=supermarket" className={`transition-colors ${location.pathname === '/shop' && location.search === '?category=supermarket' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Supermarket</Link></li>
             <li><Link to="/about" className={`block py-2 transition-colors ${location.pathname === '/about' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>About Us</Link></li>
             <li><Link to="/contact" className={`block py-2 transition-colors ${location.pathname === '/contact' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Contact</Link></li>
-            <li><Link to="/product/conversion" className={`transition-colors ${location.pathname === '/product/conversion' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>New Product Page</Link></li>
+            {/*<li><Link to="/product/3" className={`transition-colors ${location.pathname === '/product/3' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Featured Product</Link></li>*/}
           </ul>
         </nav>
 
@@ -115,7 +116,7 @@ export function Header() {
               <li><Link to="/shop?category=beauty" className={`block py-2 transition-colors ${location.pathname === '/shop' && location.search === '?category=beauty' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Personal Care</Link></li>
               <li><Link to="/about" className={`block py-2 transition-colors ${location.pathname === '/about' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>About Us</Link></li>
               <li><Link to="/contact" className={`block py-2 transition-colors ${location.pathname === '/contact' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Contact</Link></li>
-              <li><Link to="/product/conversion" className={`block py-2 transition-colors ${location.pathname === '/product/conversion' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>New Product Page</Link></li>
+              <li><Link to="/product/3" className={`block py-2 transition-colors ${location.pathname === '/product/3' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Featured Product</Link></li>
             </ul>
           </div>
         )}

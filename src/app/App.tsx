@@ -3,8 +3,6 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
 import { ShopPage } from './pages/ShopPage';
-import { ProductPage } from './pages/ProductPage';
-import { ProductPageSecond } from './pages/ProductPageSecond';
 import { ProductPageConversion } from './pages/ProductPageConversion';
 import { LoginPage } from './pages/LoginPage';
 import { FavoritesPage } from './pages/FavoritesPage';
@@ -21,9 +19,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/shop" element={<ShopPage />} />
-            <Route path="/product/2" element={<ProductPageSecond />} />
-            <Route path="/product/conversion" element={<ProductPageConversion />} />
-            <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/product/:id" element={<ProductPageConversion />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/about" element={<AboutPage />} />

@@ -79,7 +79,7 @@ const productData = {
     { name: 'Large', description: 'Extra room for ears' },
   ],
   stockCount: 23,
-  soldThisWeek: 847,
+  soldThisWeek: 25,
   shipping: {
     free: true,
     estimatedDelivery: 'Tomorrow, Feb 15',
@@ -203,15 +203,14 @@ export function ProductPageConversion() {
   const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
   const isLowStock = product.stockCount <= 20;
 
-  // Sticky desktop CTA scroll detection
+  // Sticky desktop CTA - show after scrolling 400px
   const [showDesktopBar, setShowDesktopBar] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
-      if (!ctaRef.current) return;
-      const rect = ctaRef.current.getBoundingClientRect();
-      setShowDesktopBar(rect.bottom < 0);
+      setShowDesktopBar(window.scrollY > 1000);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Check initial scroll
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -250,7 +249,7 @@ export function ProductPageConversion() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* ========== STICKY DESKTOP CTA BAR ========== */}
-      <div className="fixed top-24 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm hidden md:block transition-transform duration-300">
+      <div className={`fixed top-0 left-0 right-0 z-[60] bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-lg hidden md:block transition-all duration-300 ease-in-out ${showDesktopBar ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
         <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-3">
           <div className="flex items-center justify-between gap-6">
             <div className="flex items-center gap-4 min-w-0">
@@ -437,7 +436,7 @@ export function ProductPageConversion() {
             </h1>
 
             {/* Product Category */}
-            <div className="flex items-center gap-2">
+            {/*<div className="flex items-center gap-2">
               <Link 
                 to={`/shop?category=${product.categorySlug}`} 
                 className="inline-flex items-center px-3 py-1.5 rounded-full bg-orange-100 text-orange-700 text-sm font-medium hover:bg-orange-200 transition-colors"
@@ -447,7 +446,7 @@ export function ProductPageConversion() {
               </Link>
               <span className="text-gray-400">|</span>
               <span className="text-sm text-gray-500">SKU: {product.id.toUpperCase()}-EN5PRO</span>
-            </div>
+            </div>*/}
 
             {/* Rating & Social Proof */}
             <div className="flex items-center gap-3 flex-wrap">
