@@ -249,7 +249,7 @@ export function ProductPageConversion() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* ========== STICKY DESKTOP CTA BAR ========== */}
-      <div className={`fixed top-0 left-0 right-0 z-[60] bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-lg hidden md:block transition-all duration-300 ease-in-out ${showDesktopBar ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
+      {/*<div className={`fixed top-0 left-0 right-0 z-[60] bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-lg hidden md:block transition-all duration-300 ease-in-out ${showDesktopBar ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}>
         <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-3">
           <div className="flex items-center justify-between gap-6">
             <div className="flex items-center gap-4 min-w-0">
@@ -288,10 +288,10 @@ export function ProductPageConversion() {
             </div>
           </div>
         </div>
-      </div>
+      </div>*/}
 
       {/* ========== STICKY MOBILE BAR ========== */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-[9999] bg-white border-t border-gray-200 shadow-2xl">
+      {/*<div className="md:hidden fixed bottom-0 left-0 right-0 z-[9999] bg-white border-t border-gray-200 shadow-2xl">
         <div className="flex items-center py-2 px-4 gap-3">
           <div className="flex flex-col justify-center min-w-0 flex-1 pr-2">
             <span className="text-xs font-medium text-gray-900 truncate max-w-[160px] mb-1">Bloom Picks EN5 Pro</span>
@@ -329,7 +329,7 @@ export function ProductPageConversion() {
             </button>
           </div>
         </div>
-      </div>
+      </div>*/}
 
       <div className="container mx-auto px-3 md:px-4 lg:px-8 max-w-7xl pt-2 md:pt-2 lg:pt-2 pb-24 md:pb-8">
         {/* Breadcrumb */}
@@ -920,7 +920,7 @@ export function ProductPageConversion() {
         </div>
 
         {/* ========== FAQ SECTION (Clients LOVE this) ========== */}
-        <GlassCard className="mb-12">
+        <GlassCard className="mt-10 lg:mt-14 mb-12">
           <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3">
             <MessageCircle className="w-10 h-10 text-orange-500 shrink-0" />
             Frequently Asked Questions
