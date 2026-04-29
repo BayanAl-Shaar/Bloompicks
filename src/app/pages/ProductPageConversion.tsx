@@ -1,4 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '../components/ui/breadcrumb';
 import { useParams, Link } from 'react-router';
 import { GlassCard } from '../components/GlassCard';
 import { ProductCard } from '../components/ProductCard';
@@ -7,6 +15,7 @@ import {
   ChevronLeft, ChevronRight, Search, CheckCircle, Package,
   Clock, Zap, Award, ThumbsUp, MessageCircle, ArrowDown
 } from 'lucide-react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
 
 // Realistic product data for a premium wireless headphone
 const productData = {
@@ -19,18 +28,18 @@ const productData = {
   rating: 4.7,
   reviewCount: 1247,
   images: [
-    'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800',
-    'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800',
-    'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=800',
-    'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800',
+    'https://res.cloudinary.com/dpiip2agt/image/upload/v1777197455/pro1_zodhoa.webp',
+    'https://res.cloudinary.com/dpiip2agt/image/upload/v1777197454/Frame-18_by0lhe.webp',
+    'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287407/6_os6iro.webp',
+    'https://res.cloudinary.com/dpiip2agt/image/upload/v1777197456/Frame-22_akushg.webp',
   ],
   description: 'Experience immersive Hi-Res audio with our flagship EN5 Pro ANC headphones. Featuring advanced active noise cancellation, 30-hour battery life, and premium comfort for all-day listening.',
   shortBenefits: [
-    '🔇 Active Noise Cancellation blocks distractions',
-    '⚡ 30-hour battery - charge once, listen for days',
-    '🎯 Hi-Res Audio with deep bass and crystal highs',
-    '💧 Sweat & water resistant for workouts',
-    '📱 Instant pairing with any device',
+    ' Active Noise Cancellation blocks distractions',
+    ' 30-hour battery - charge once, listen for days',
+    ' Hi-Res Audio with deep bass and crystal highs',
+    ' Sweat & water resistant for workouts',
+    '    Instant pairing with any device',
   ],
   features: [
     'Advanced ANC technology reduces ambient noise by up to 35dB',
@@ -61,9 +70,9 @@ const productData = {
     'Quick start guide',
   ],
   colors: [
-    { name: 'Midnight Black', hex: '#1a1a1a', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800' },
-    { name: 'Pearl White', hex: '#f5f5f5', image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800' },
-    { name: 'Navy Blue', hex: '#1e3a5f', image: 'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=800' },
+    { name: 'Midnight Black', hex: '#1a1a1a', image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800', stock: 12 },
+    { name: 'Pearl White', hex: '#f5f5f5', image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=800', stock: 8 },
+    { name: 'Navy Blue', hex: '#1e3a5f', image: 'https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=800', stock: 3 },
   ],
   sizes: [
     { name: 'Standard', description: 'Fits most adults' },
@@ -114,11 +123,64 @@ const reviews = [
 ];
 
 const relatedProducts = [
-  { id: '4', name: 'Bloom Picks EN3 Sport Earbuds', price: 79.99, originalPrice: 99.99, rating: 4.5, reviews: 892, inStock: true, image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400' },
-  { id: '5', name: 'Premium Carrying Case', price: 29.99, rating: 4.8, reviews: 234, inStock: true, image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400' },
-  { id: '6', name: 'EN5 Pro Wireless Charger', price: 39.99, originalPrice: 49.99, rating: 4.6, reviews: 156, inStock: true, image: 'https://images.unsplash.com/photo-1586816879360-004f5b0c51e3?w=400' },
-  { id: '7', name: 'Extra Ear Cushions (2 Pack)', price: 19.99, rating: 4.7, reviews: 445, inStock: true, image: 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=400' },
+  { id: '1', name: 'FLORA GLOBE EMS Neck Lifting and Facial Massager Skin Tightening Device', price: 89.99, originalPrice: 129.99, rating: 4.5, reviews: 234, inStock: true, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777195382/BLOOMPICKS-FLORA-GLOBE-EMS-Boyun-Gerdirme-ve-Yuz-Masaj-Aleti-Cilt-Sikilastirma-Cihazi-1_kp45by.webp' },
+  { id: '2', name: 'Bloom Picks EN5 ANC Air Pro 2 Noise Cancelling Bluetooth Headphones – Compatible with All Phones', price: 59.99, originalPrice: 99.99, rating: 4.8, reviews: 512, inStock: true, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777197455/pro1_zodhoa.webp' },
+  { id: '4', name: 'Bloom Picks 1080P Full HD Dual Lens Araç İçi Kamera - 170° Geniş Açı Gece Görüşlü Yol Kayıt Cihazı', price: 79.99, originalPrice: 119.99, rating: 4.9, reviews: 421, inStock: true, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287407/4_dar3ux.webp' },
+  { id: '5', name: 'BLOOMPİCKS Dahili Kablolu 10000mAh 22,5W Hızlı Şarj Powerbank – Type-C & iPhone Uyumlu – LED Ekranlı', price: 45.99, originalPrice: 69.99, rating: 4.6, reviews: 156, inStock: true, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777287407/5_bwalwv.webp' },
 ];
+
+const faqs = [
+  {
+    question: 'Is it compatible with iPhone?',
+    answer: 'Yes! The EN5 Pro pairs instantly with iPhone, iPad, and all Apple devices via Bluetooth 5.3. It also supports multipoint connection, so you can stay connected to two devices at the same time.',
+  },
+  {
+    question: 'Does it support fast charging?',
+    answer: 'Absolutely. A quick 5-minute charge gives you up to 2 hours of playback. A full charge via USB-C takes about 2 hours and delivers 30 hours of continuous listening with ANC on (45 hours with ANC off).',
+  },
+  {
+    question: 'Can I use these for workouts?',
+    answer: 'Yes. The EN5 Pro has an IPX4 water-resistance rating, which means it can handle sweat and light rain. The secure over-ear fit stays comfortable during vigorous exercise.',
+  },
+  {
+    question: 'How good is the noise cancellation?',
+    answer: 'Our advanced ANC technology reduces ambient noise by up to 35dB, making these ideal for commuting, open offices, or noisy environments. You can also switch to Transparency mode when you need to hear your surroundings.',
+  },
+  {
+    question: 'What is your return policy?',
+    answer: 'We offer a 30-day hassle-free return policy with free return shipping. If you\'re not completely satisfied, just send them back for a full refund—no questions asked.',
+  },
+];
+
+// Helper for recently viewed localStorage
+const RECENTLY_VIEWED_KEY = 'bloom_recently_viewed';
+const MAX_RECENT = 4;
+
+interface RecentProduct {
+  id: string;
+  name: string;
+  price: number;
+  originalPrice?: number;
+  rating: number;
+  reviews: number;
+  image: string;
+  inStock: boolean;
+}
+
+function getRecentlyViewed(): RecentProduct[] {
+  try {
+    const raw = localStorage.getItem(RECENTLY_VIEWED_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveRecentlyViewed(product: RecentProduct) {
+  const existing = getRecentlyViewed().filter((p) => p.id !== product.id);
+  const updated = [product, ...existing].slice(0, MAX_RECENT);
+  localStorage.setItem(RECENTLY_VIEWED_KEY, JSON.stringify(updated));
+}
 
 export function ProductPageConversion() {
   const { id } = useParams();
@@ -127,8 +189,8 @@ export function ProductPageConversion() {
   const [selectedSize, setSelectedSize] = useState('Standard');
   const [selectedColor, setSelectedColor] = useState(productData.colors[0]);
   const [isWishlisted, setIsWishlisted] = useState(false);
-  const [showStickyBar, setShowStickyBar] = useState(false);
   const [activeTab, setActiveTab] = useState('description');
+  const [recentlyViewed, setRecentlyViewed] = useState<RecentProduct[]>([]);
   const ctaRef = useRef<HTMLDivElement>(null);
   const descriptionRef = useRef<HTMLDivElement>(null);
 
@@ -141,16 +203,41 @@ export function ProductPageConversion() {
   const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
   const isLowStock = product.stockCount <= 20;
 
-  // Sticky bar scroll detection
+  // Sticky desktop CTA scroll detection
+  const [showDesktopBar, setShowDesktopBar] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       if (!ctaRef.current) return;
       const rect = ctaRef.current.getBoundingClientRect();
-      setShowStickyBar(rect.bottom < 0);
+      setShowDesktopBar(rect.bottom < 0);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Track this product in "recently viewed" + demo data for first load
+  useEffect(() => {
+    const current: RecentProduct = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      originalPrice: product.originalPrice,
+      rating: product.rating,
+      reviews: product.reviewCount,
+      image: product.images[0],
+      inStock: product.stockCount > 0,
+    };
+    saveRecentlyViewed(current);
+    let viewed = getRecentlyViewed().filter((p) => p.id !== product.id);
+    // Demo data for first visit
+    if (viewed.length === 0) {
+      viewed = [
+        { id: '1', name: 'FLORA GLOBE EMS Neck Lifting and Facial Massager Skin Tightening Device', price: 89.99, rating: 4.5, reviews: 234, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777195382/BLOOMPICKS-FLORA-GLOBE-EMS-Boyun-Gerdirme-ve-Yuz-Masaj-Aleti-Cilt-Sikilastirma-Cihazi-1_kp45by.webp', inStock: true },
+        { id: '2', name: 'Bloom Picks EN5 ANC Air Pro 2 Noise Cancelling Bluetooth Headphones – Compatible with All Phones', price: 59.99, rating: 4.8, reviews: 512, image: 'https://res.cloudinary.com/dpiip2agt/image/upload/v1777197455/pro1_zodhoa.webp', inStock: true },
+      ];
+    }
+    setRecentlyViewed(viewed);
+  }, [product.id]);
 
   const handleAddToCart = () => {
     console.log('Added to cart:', { productId: product.id, quantity, color: selectedColor.name, size: selectedSize });
@@ -162,35 +249,82 @@ export function ProductPageConversion() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* ========== STICKY MOBILE BAR ========== */}
-      <div className={`fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] md:hidden transition-transform duration-300 ${showStickyBar ? 'translate-y-0' : 'translate-y-full'}`}>
-        <div className="flex items-center justify-between px-4 py-3 gap-3">
-          <div className="flex flex-col min-w-0">
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-bold text-gray-900">${product.price}</span>
-              {product.originalPrice && (
-                <span className="text-sm text-gray-400 line-through">${product.originalPrice}</span>
-              )}
+      {/* ========== STICKY DESKTOP CTA BAR ========== */}
+      <div className="fixed top-24 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm hidden md:block transition-transform duration-300">
+        <div className="container mx-auto px-4 lg:px-8 max-w-7xl py-3">
+          <div className="flex items-center justify-between gap-6">
+            <div className="flex items-center gap-4 min-w-0">
+              <img src={product.images[0]} alt="" className="w-12 h-12 rounded-lg object-cover border border-gray-200" />
+              <div className="min-w-0">
+                <h3 className="text-sm font-semibold text-gray-900 truncate max-w-[300px] lg:max-w-[400px]">{product.name}</h3>
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="font-bold text-gray-900">${product.price}</span>
+                  <span className="text-gray-400 line-through">${product.originalPrice}</span>
+                  {isLowStock && (
+                    <span className="text-red-600 font-medium text-xs">🔥 Selling fast — {product.stockCount} left</span>
+                  )}
+                </div>
+              </div>
             </div>
-            <div className="flex items-center gap-2 text-xs">
-              {isLowStock && (
-                <span className="text-red-600 font-medium">🔥 Only {product.stockCount} left</span>
-              )}
-              <span className="text-gray-500">•</span>
-              <span className="text-orange-600 font-medium">🔥 {product.soldThisWeek}+ sold</span>
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <button
+                onClick={() => setIsWishlisted(!isWishlisted)}
+                className="p-2.5 rounded-full bg-gray-100 hover:bg-red-50 transition-colors"
+                aria-label="Add to wishlist"
+              >
+                <Heart className={`w-5 h-5 ${isWishlisted ? 'fill-red-500 text-red-500' : 'text-gray-600'}`} />
+              </button>
+              <button
+                onClick={handleAddToCart}
+                className="px-5 py-2.5 rounded-full bg-gray-900 text-white font-semibold text-sm hover:bg-gray-800 transition-colors"
+              >
+                Add to Cart
+              </button>
+              <button
+                onClick={handleBuyNow}
+                className="px-6 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold text-sm shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+              >
+                Buy Now
+              </button>
             </div>
           </div>
-          <div className="flex gap-2 flex-shrink-0">
+        </div>
+      </div>
+
+      {/* ========== STICKY MOBILE BAR ========== */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-[9999] bg-white border-t border-gray-200 shadow-2xl">
+        <div className="flex items-center py-2 px-4 gap-3">
+          <div className="flex flex-col justify-center min-w-0 flex-1 pr-2">
+            <span className="text-xs font-medium text-gray-900 truncate max-w-[160px] mb-1">Bloom Picks EN5 Pro</span>
+            <div className="flex items-baseline gap-1 mb-1">
+              <span className="text-lg font-bold text-gray-900">${product.price}</span>
+              {product.originalPrice && (
+                <span className="text-xs text-gray-400 line-through">${product.originalPrice}</span>
+              )}
+            </div>
+            <div className="flex items-center gap-1 text-xs">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className={`w-3 h-3 ${i < Math.floor(product.rating) ? 'fill-amber-400 text-amber-400' : 'text-gray-300'}`} />
+                ))}
+              </div>
+              ({product.reviewCount})
+              {isLowStock && (
+                <span className="ml-1 text-red-600 font-bold">🔥 {product.stockCount} left</span>
+              )}
+            </div>
+          </div>
+          <div className="flex items-center gap-2 flex-shrink-0">
             <button
               onClick={() => setIsWishlisted(!isWishlisted)}
-              className="p-3 rounded-full bg-gray-100 hover:bg-red-50 transition-colors"
-              aria-label="Add to wishlist"
+              className="flex flex-col items-center p-2 -m-2 rounded-lg bg-gray-100 hover:bg-red-50 transition-colors"
+              aria-label="Wishlist"
             >
               <Heart className={`w-5 h-5 ${isWishlisted ? 'fill-red-500 text-red-500' : 'text-gray-600'}`} />
             </button>
             <button
               onClick={handleBuyNow}
-              className="px-5 py-3 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold text-sm shadow-lg hover:shadow-xl hover:scale-105 transition-all"
+              className="px-6 py-3 rounded-2xl bg-gradient-to-r from-orange-500 to-amber-600 text-white font-bold text-sm shadow-2xl hover:shadow-3xl hover:scale-[1.05] transition-all flex items-center justify-center flex-1 mx-1"
             >
               Buy Now
             </button>
@@ -198,17 +332,43 @@ export function ProductPageConversion() {
         </div>
       </div>
 
-      <div className="container mx-auto px-3 md:px-4 lg:px-8 max-w-7xl py-4 md:py-6 lg:py-8">
+      <div className="container mx-auto px-3 md:px-4 lg:px-8 max-w-7xl pt-2 md:pt-2 lg:pt-2 pb-24 md:pb-8">
         {/* Breadcrumb */}
-        <nav className="mb-4 md:mb-6 text-sm">
-          <ol className="flex items-center flex-wrap gap-1 text-gray-500">
-            <li><Link to="/" className="hover:text-orange-600 transition-colors">Home</Link></li>
-            <li><span className="mx-1">›</span></li>
-            <li><Link to="/shop" className="hover:text-orange-600 transition-colors">Headphones</Link></li>
-            <li><span className="mx-1">›</span></li>
-            <li className="text-gray-900 font-medium truncate max-w-[200px] lg:max-w-none">{product.name}</li>
-          </ol>
-        </nav>
+        <Breadcrumb className="mb-4 md:mb-6">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+<BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+<BreadcrumbItem>
+              <BreadcrumbLink href="/shop">Categories</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+<BreadcrumbItem>
+              <BreadcrumbLink href="/shop?category=electronics">Electronics</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+<BreadcrumbItem>
+              <BreadcrumbLink href="/shop?category=bluetooth-headphones">Bluetooth Headphones</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+<BreadcrumbItem>
+              <BreadcrumbLink href="/shop?category=mens">Men's</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+<BreadcrumbItem>
+              <BreadcrumbLink href="/shop?category=headphones">Headphones</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+<BreadcrumbItem>
+              <BreadcrumbLink href="/shop?category=earphones">Earphones</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>{product.name}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
 
         {/* ========== ABOVE THE FOLD ========== */}
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 mb-10 lg:mb-14">
@@ -232,7 +392,7 @@ export function ProductPageConversion() {
                   )}
                   {isLowStock && (
                     <span className="px-3 py-1.5 rounded-full bg-orange-500 text-white text-xs font-semibold animate-pulse">
-                      🔥 Only {product.stockCount} left
+                      🔥 Selling fast — {product.stockCount} left in stock
                     </span>
                   )}
                 </div>
@@ -330,6 +490,7 @@ export function ProductPageConversion() {
             </button>
 
             {/* Key Selling Points */}
+            <h3 className="font-semibold text-gray-900">Key Features</h3>
             <ul className="space-y-2">
               {product.shortBenefits.map((benefit, index) => (
                 <li key={index} className="flex items-start gap-2 text-sm text-gray-700">
@@ -338,6 +499,39 @@ export function ProductPageConversion() {
                 </li>
               ))}
             </ul>
+
+            {/* Recent Reviews Preview */}
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-semibold text-gray-900">What Customers Say</h3>
+                <button
+                  onClick={() => {
+                    descriptionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    setActiveTab('reviews');
+                  }}
+                  className="text-sm text-orange-600 font-medium hover:underline"
+                >
+                  Read all {product.reviewCount} reviews
+                </button>
+              </div>
+              <div className="space-y-3">
+                {reviews.slice(0, 2).map((review) => (
+                  <div key={review.id} className="p-3 bg-white border border-gray-100 rounded-xl shadow-sm">
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className="flex">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className={`w-3.5 h-3.5 ${i < review.rating ? 'fill-amber-400 text-amber-400' : 'text-gray-300'}`} />
+                        ))}
+                      </div>
+                      <span className="text-xs font-semibold text-gray-900">{review.name}</span>
+                      <span className="text-xs text-gray-400">{review.date}</span>
+                    </div>
+                    <h4 className="text-sm font-semibold text-gray-800 mb-1">{review.title}</h4>
+                    <p className="text-sm text-gray-600 line-clamp-2">{review.content}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             {/* Stock Urgency */}
             {isLowStock && (
@@ -364,7 +558,10 @@ export function ProductPageConversion() {
             {/* Color Selection */}
             <div>
               <div className="flex items-center justify-between mb-3">
-                <h4 className="text-sm font-semibold text-gray-900">Color: <span className="font-normal text-gray-600">{selectedColor.name}</span></h4>
+                <h4 className="text-sm font-semibold text-gray-900">
+                  Color: <span className="font-normal text-gray-600">{selectedColor.name}</span>
+                  <span className="ml-2 text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded-full uppercase tracking-wide">(Selected)</span>
+                </h4>
               </div>
               <div className="flex gap-3">
                 {product.colors.map((color) => (
@@ -380,6 +577,18 @@ export function ProductPageConversion() {
                       style={{ backgroundColor: color.hex, border: color.hex === '#f5f5f5' ? '1px solid #ddd' : 'none' }}
                     />
                   </button>
+                ))}
+              </div>
+              {/* Stock per color */}
+              <div className="mt-2 flex flex-wrap gap-2">
+                {product.colors.map((color) => (
+                  <span 
+                    key={color.name} 
+                    className={`text-xs px-2 py-1 rounded-md inline-flex items-center gap-1 ${selectedColor.name === color.name ? 'bg-orange-50 text-orange-700 border border-orange-200 font-medium' : 'text-gray-400'}`}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ backgroundColor: color.hex }} />
+                    {color.name} — {color.stock <= 5 ? `Only ${color.stock} left` : `${color.stock} left`}
+                  </span>
                 ))}
               </div>
             </div>
@@ -405,6 +614,15 @@ export function ProductPageConversion() {
                   </button>
                 ))}
               </div>
+            </div>
+
+            {/* Decision Confidence Section */}
+            <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
+              <p className="text-sm text-green-800 font-medium">
+                ✔ 1,247 customers bought this<br />
+                ✔ 94% recommend this product<br />
+                ✔ Free returns within 30 days
+              </p>
             </div>
 
             {/* ========== CTA SECTION ========== */}
@@ -457,6 +675,9 @@ export function ProductPageConversion() {
                 </button>
               </div>
             </div>
+
+            {/* Why shop with us */}
+            <h4 className="font-semibold text-gray-900 mb-2">Why shop with us?</h4>
 
             {/* ========== TRUST SIGNALS ========== */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 bg-gray-50 rounded-xl border border-gray-100">
@@ -679,7 +900,7 @@ export function ProductPageConversion() {
           </div>
         </div>
 
-        {/* ========== RELATED PRODUCTS ========== */}
+{/* ========== RELATED PRODUCTS ========== */}
         <div>
           <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">You May Also Like</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
@@ -688,9 +909,37 @@ export function ProductPageConversion() {
             ))}
           </div>
         </div>
+
+        {/* ========== RECENTLY VIEWED ========== */}
+        <div className="mt-10 lg:mt-14">
+          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">Recently Viewed</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+            {recentlyViewed.map((product) => (
+              <ProductCard key={product.id} {...product} />
+            ))}
+          </div>
+        </div>
+
+        {/* ========== FAQ SECTION (Clients LOVE this) ========== */}
+        <GlassCard className="mb-12">
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 flex items-center gap-3">
+            <MessageCircle className="w-10 h-10 text-orange-500 shrink-0" />
+            Frequently Asked Questions
+          </h3>
+          <Accordion type="single" collapsible className="w-full max-w-4xl mx-auto">
+            {faqs.map(({ question, answer }, idx) => (
+              <AccordionItem key={idx} value={`faq-${idx}`}>
+                <AccordionTrigger className="text-lg hover:no-underline">
+                  {question}
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600 leading-relaxed pt-4">
+                  {answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </GlassCard>
       </div>
     </div>
   );
 }
-
-export default ProductPageConversion;

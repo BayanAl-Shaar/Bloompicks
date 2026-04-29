@@ -13,7 +13,7 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-white/30 shadow-sm">
       <div className="container mx-auto px-4">
         {/* Top bar */}
-        <div className="py-1.5 sm:py-2 border-b border-white/20">
+        <div className="py-1 sm:py-1.5 border-b border-white/20">
           <div className="flex items-center justify-center sm:justify-between text-xs sm:text-sm">
             <p className="text-[var(--muted-foreground)] text-center sm:text-left">Welcome to Bloom Picks - Free Shipping on Orders Over $50!</p>
             <div className="hidden sm:flex items-center gap-4">
@@ -24,11 +24,11 @@ export function Header() {
         </div>
 
         {/* Main header */}
-        <div className="py-4">
+        <div className="py-3">
           <div className="flex items-center justify-between gap-8">
             {/* Logo */}
             <Link to="/" className="flex-shrink-0">
-              <img src={logo} alt="Bloom Picks" className="h-12" />
+              <img src={logo} alt="Bloom Picks" className="h-10" />
             </Link>
 
             {/* Search bar */}
@@ -81,7 +81,7 @@ export function Header() {
         </div>
 
         {/* Navigation */}
-        <nav className="hidden md:block py-3 border-t border-white/20">
+        <nav className="hidden md:block py-2 border-t border-white/20">
           <ul className="flex items-center justify-center gap-8">
             <li><Link to="/shop" className={`transition-colors ${location.pathname === '/shop' && !location.search ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>All Products</Link></li>
             <li><Link to="/shop?category=electronic" className={`transition-colors ${location.pathname === '/shop' && location.search === '?category=electronic' ? 'text-[var(--primary)] underline' : 'hover:text-[var(--primary)]'}`}>Electronic</Link></li>
@@ -98,7 +98,7 @@ export function Header() {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-white/20">
+          <div className="md:hidden py-3 border-t border-white/20">
             <div className="mb-4">
               <input
                 type="text"
@@ -123,3 +123,4 @@ export function Header() {
     </header>
   );
 }
+
