@@ -647,13 +647,7 @@ export function ProductPageConversion() {
                 </div>
 
                 {/* Wishlist Button */}
-                <button
-                  onClick={() => setIsWishlisted(!isWishlisted)}
-                  className="p-3 rounded-lg border border-gray-200 bg-white hover:bg-red-50 hover:border-red-200 transition-all"
-                  aria-label="Add to wishlist"
-                >
-                  <Heart className={`w-6 h-6 ${isWishlisted ? 'fill-red-500 text-red-500' : 'text-gray-400'}`} />
-                </button>
+                
               </div>
 
               {/* Main CTAs */}
