@@ -58,7 +58,7 @@ export function Footer() {
               <li><Link to="/about" className="text-white/80 hover:text-white transition-colors">About Us</Link></li>
               <li><Link to="/contact" className="text-white/80 hover:text-white transition-colors">Contact Us</Link></li>
               <li><Link to="/return-process" className="text-white/80 hover:text-white transition-colors">Return Process</Link></li>
-              <li><a href="#" className="text-white/80 hover:text-white transition-colors">Shipping Information</a></li>
+              <li><Link to="/shipping-information" className="text-white/80 hover:text-white transition-colors">Shipping Information</Link></li>
             </ul>
           </div>
 
@@ -70,7 +70,7 @@ export function Footer() {
               <li><a href="#" className="text-white/80 hover:text-white transition-colors">Help Center</a></li>
               <li><a href="#" className="text-white/80 hover:text-white transition-colors">Terms & Conditions</a></li>
               <li><a href="#" className="text-white/80 hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-white/80 hover:text-white transition-colors">FAQ</a></li>
+              <li><Link to="/faq" className="text-white/80 hover:text-white transition-colors">FAQ</Link></li>
             </ul>
           </div>
 

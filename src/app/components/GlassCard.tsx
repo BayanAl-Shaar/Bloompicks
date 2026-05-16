@@ -4,11 +4,13 @@ interface GlassCardProps {
   children: ReactNode;
   className?: string;
   hover?: boolean;
+  id?: string;
 }
 
-export function GlassCard({ children, className = '', hover = false }: GlassCardProps) {
+export function GlassCard({ children, className = '', hover = false, id }: GlassCardProps) {
   return (
     <div
+      id={id}
       className={`
         relative rounded-xl p-6
         bg-white/70 backdrop-blur-lg

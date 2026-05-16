@@ -10,6 +10,7 @@ import { Link, useLocation } from 'react-router';
 import React, { useState, useEffect } from 'react';
 import logo from '../../imports/image.png';
 
+
 export function Header() {
   const [cartCount] = useState(3);
   const [cartTotal] = useState('$45.99');
@@ -91,7 +92,7 @@ export function Header() {
               <div className="flex flex-1 justify-end">
                 <div className="flex items-center gap-1">
                   <Link
-                    to="/login"
+                    to="/my-account"
                     className="flex h-11 w-11 items-center justify-center rounded-full bg-white/50 border"
                     aria-label="Login"
                   >
@@ -111,7 +112,8 @@ export function Header() {
                     )}
                   </Link>
 
-                  <button
+                  <Link
+                    to="/cart"
                     className="relative flex h-11 w-11 items-center justify-center rounded-full bg-white/50 border"
                     aria-label="Cart"
                   >
@@ -119,7 +121,7 @@ export function Header() {
                     <span className="absolute -top-1 -right-1 flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[var(--primary)] px-1 text-xs font-bold text-white">
                       {cartCount}
                     </span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -148,9 +150,9 @@ export function Header() {
             <div className="hidden md:ml-auto md:flex md:items-center md:gap-2 lg:gap-4">
 
               {/* LOGIN */}
-              <Link to="/login" className="flex min-w-[116px] items-center justify-center gap-2 rounded-full bg-white/50 px-4 py-2 border">
+              <Link to="/my-account" className="flex min-w-[116px] items-center justify-center gap-2 rounded-full bg-white/50 px-4 py-2 border">
                 <User className="w-5 h-5" />
-                <span>Login</span>
+                <span>My Account</span>
               </Link>
 
               {/* FAVORITES */}
@@ -165,13 +167,13 @@ export function Header() {
               </Link>
 
               {/* CART */}
-              <button className="flex min-w-[116px] items-center justify-center gap-2 rounded-full bg-white/50 px-4 py-2 border">
+              <Link to="/cart" className="flex min-w-[116px] items-center justify-center gap-2 rounded-full bg-white/50 px-4 py-2 border">
                 <ShoppingCart className="w-5 h-5" />
                 <span>Cart</span>
                 <span className="min-w-[36px] rounded-full bg-[var(--primary)] px-2 py-0.5 text-center text-xs font-bold text-white">
                   {cartTotal}
                 </span>
-              </button>
+              </Link>
 
             </div>
           </div>
@@ -181,7 +183,9 @@ export function Header() {
         <nav className="hidden md:block py-2 border-t border-white/20">
           <ul className="flex items-center justify-center gap-8">
             <li><Link to="/" className="text-[var(--primary)] underline">BloomPicks</Link></li>
+            <li><Link to="/new-home">New Home</Link></li>
             <li><Link to="/shop">All Products</Link></li>
+
             <li><Link to="/shop?category=electronic">Electronic</Link></li>
             <li><Link to="/shop?category=male">Male</Link></li>
             <li><Link to="/shop?category=home-furniture">Home & Furniture</Link></li>
@@ -191,13 +195,15 @@ export function Header() {
           </ul>
         </nav>
 
+
         {/* MOBILE MENU */}
         {mobileMenuOpen && (
           <div className="md:hidden py-3 border-t border-white/20">
             <ul className="space-y-2">
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/shop">Shop All</Link></li>
-              <li><Link to="/about">About</Link></li>
+            <li><Link to="/shop">Shop All</Link></li>
+            <li><Link to="/my-account">My Account</Link></li>
+            <li><Link to="/about">About</Link></li>
               <li><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
