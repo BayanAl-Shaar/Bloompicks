@@ -149,6 +149,12 @@ export function Header() {
             {/* ACTIONS */}
             <div className="hidden md:ml-auto md:flex md:items-center md:gap-2 lg:gap-4">
 
+              {/* LOG IN */}
+              <Link to="/login" className="flex min-w-[116px] items-center justify-center gap-2 rounded-full bg-white/50 px-4 py-2 border">
+                <User className="w-5 h-5" />
+                <span>Log In</span>
+              </Link>
+
               {/* LOGIN */}
               <Link to="/my-account" className="flex min-w-[116px] items-center justify-center gap-2 rounded-full bg-white/50 px-4 py-2 border">
                 <User className="w-5 h-5" />
