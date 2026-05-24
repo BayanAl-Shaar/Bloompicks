@@ -51,13 +51,6 @@ export function CartPage() {
 
         <div className="grid gap-6 lg:grid-cols-3 lg:gap-8">
           <section className="space-y-4 lg:col-span-2" aria-label="Cart items">
-            <GlassCard className="hidden p-4 md:block">
-              <div className="grid grid-cols-[1fr_auto_auto] gap-4 text-sm text-[var(--muted-foreground)]">
-                <span>Product</span>
-                <span className="text-center">Quantity</span>
-                <span className="text-right">Subtotal</span>
-              </div>
-            </GlassCard>
 
             <ul className="space-y-4">
               {cartItems.map((item) => (
