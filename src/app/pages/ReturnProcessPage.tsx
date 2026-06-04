@@ -1,4 +1,5 @@
 import { GlassCard } from '../components/GlassCard';
+
 import {
   Accordion,
   AccordionContent,
@@ -20,12 +21,15 @@ export function ReturnProcessPage() {
         <GlassCard className="mb-12">
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="step-1">
-              <AccordionTrigger>Aldığım ürünü nasıl iade edebilirim?</AccordionTrigger>
+              <AccordionTrigger className="text-base md:text-lg">
+                Aldığım ürünü nasıl iade edebilirim?
+              </AccordionTrigger>
               <AccordionContent>
                 <div className="space-y-4">
-                  <p className="text-[var(--muted-foreground)]">
+                  <p className="text-[16px] md:text-[17px] text-[var(--muted-foreground)]">
                     Bloom Picks’te iade süreci oldukça basittir. İade veya iptal talebiniz varsa aşağıdaki adımları takip ederek kolayca başvuruda bulunabilirsiniz:
                   </p>
+
                   <ul className="space-y-3 text-[var(--muted-foreground)]">
                     <li className="flex items-start gap-2">
                       <span className="text-[var(--primary)] mt-1">1.</span>
@@ -56,9 +60,11 @@ export function ReturnProcessPage() {
             </AccordionItem>
 
             <AccordionItem value="policy-1">
-              <AccordionTrigger>İade politikanız nedir?</AccordionTrigger>
+              <AccordionTrigger className="text-base md:text-lg">
+                İade politikanız nedir?
+              </AccordionTrigger>
               <AccordionContent>
-                <ul className="space-y-3 text-[var(--muted-foreground)]">
+                <ul className="space-y-3 text-[16px] md:text-[17px] text-[var(--muted-foreground)]">
                   <li className="flex items-start gap-2">
                     <span className="text-[var(--primary)] mt-1">•</span>
                     <span>Ürün tesliminden itibaren 14 gün içinde iade talebi oluşturabilirsiniz.</span>
@@ -86,53 +92,63 @@ export function ReturnProcessPage() {
             </AccordionItem>
 
             <AccordionItem value="fee-1">
-              <AccordionTrigger>İade için ücret ödeyecek miyim?</AccordionTrigger>
+              <AccordionTrigger className="text-base md:text-lg">
+                İade için ücret ödeyecek miyim?
+              </AccordionTrigger>
               <AccordionContent>
-                <p className="text-[var(--muted-foreground)]">
+                <p className="text-[16px] md:text-[17px] text-[var(--muted-foreground)]">
                   Hayır. Sistemden aldığınız iade kargo kodu ile anlaşmalı kargo firması üzerinden ücretsiz gönderim yapabilirsiniz. Farklı kargo firmalarıyla yapılan gönderilerde ücret müşteriye aittir.
                 </p>
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="single-1">
-              <AccordionTrigger>Farklı teslimatlarla gelen ürünleri tek seferde iade edebilir miyim?</AccordionTrigger>
+              <AccordionTrigger className="text-base md:text-lg">
+                Farklı teslimatlarla gelen ürünleri tek seferde iade edebilir miyim?
+              </AccordionTrigger>
               <AccordionContent>
-                <p className="text-[var(--muted-foreground)]">Evet, yapabilirsiniz.</p>
+                <p className="text-[16px] md:text-[17px] text-[var(--muted-foreground)]">Evet, yapabilirsiniz.</p>
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="refund-1">
-              <AccordionTrigger>Ücret iadem ne zaman yapılır?</AccordionTrigger>
+              <AccordionTrigger className="text-base md:text-lg">
+                Ücret iadem ne zaman yapılır?
+              </AccordionTrigger>
               <AccordionContent>
-                <p className="text-[var(--muted-foreground)]">
+                <p className="text-[16px] md:text-[17px] text-[var(--muted-foreground)]">
                   Ürün tarafımıza ulaştıktan sonra 1–3 iş günü içinde incelenir. Onay sonrası, ücret iadesi 3–7 iş günü içinde ödemenizi yaptığınız kanalla (kredi kartı, banka transferi vs.) tarafınıza yansıtılır.
                 </p>
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="late-1">
-              <AccordionTrigger>15 günü geçti, yine de iade edebilir miyim?</AccordionTrigger>
+              <AccordionTrigger className="text-base md:text-lg">
+                15 günü geçti, yine de iade edebilir miyim?
+              </AccordionTrigger>
               <AccordionContent>
-                <p className="text-[var(--muted-foreground)]">
+                <p className="text-[16px] md:text-[17px] text-[var(--muted-foreground)]">
                   Yasal iade süresi 14 gündür. Bu sürenin aşılması durumunda iade kabul edilemez. Ancak ürün kusurluysa 14 gün kuralı dışında da işlem yapılabilir (müşteri hizmetleriyle iletişime geçiniz).
                 </p>
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="invoice-1">
-              <AccordionTrigger>Faturamı kaybettim, nasıl iade yapabilirim?</AccordionTrigger>
+              <AccordionTrigger className="text-base md:text-lg">
+                Faturamı kaybettim, nasıl iade yapabilirim?
+              </AccordionTrigger>
               <AccordionContent>
                 <div className="space-y-4">
-                  <p className="text-[var(--muted-foreground)]">
+                  <p className="text-[16px] md:text-[17px] text-[var(--muted-foreground)]">
                     Bireysel siparişlerde iade işlemi için faturaya sahip olmanız zorunlu değildir. İade başvurunuz sırasında, sipariş numaranız ve iletişim bilgileriniz yeterlidir.
                   </p>
-                  <p className="text-[var(--muted-foreground)]">
+                  <p className="text-[16px] md:text-[17px] text-[var(--muted-foreground)]">
                     Ancak işlem sürecini hızlandırmak adına, sipariş detaylarınızı ve iade nedeninizi net şekilde Bize Ulaşın formunda belirtmenizi öneririz.
                   </p>
-                  <p className="text-[var(--muted-foreground)]">
+                  <p className="text-[16px] md:text-[17px] text-[var(--muted-foreground)]">
                     Kurumsal siparişlerde ise iade işlemi için, satıcı adına düzenlenmiş bir iade faturası kesilmesi gerekmektedir. İade talebini oluştururken, açıklama kısmına mutlaka iade faturası numarasını eklemelisiniz.
                   </p>
-                  <p className="text-[var(--muted-foreground)]">
+                  <p className="text-[16px] md:text-[17px] text-[var(--muted-foreground)]">
                     Müşteri temsilcimiz gerekli kontrol ve yönlendirmeleri sağlayarak süreci sizinle birlikte yönetecektir.
                   </p>
                 </div>
@@ -153,13 +169,15 @@ export function ReturnProcessPage() {
                 href="/contact"
                 className="px-8 py-3 rounded-full bg-gradient-to-r from-[#E87722] to-[#F59E0B] text-white hover:shadow-xl transition-all"
               >
-                Contact Support
+                Go to Contact Page
               </a>
               <a
-                href="mailto:returns@bloompicks.com"
+                href="https://wa.me/905539999620"
+                target="_blank"
+                rel="noreferrer"
                 className="px-8 py-3 rounded-full bg-white/50 border border-white/30 hover:border-[var(--primary)] transition-all"
               >
-                Email Returns Team
+                Contact Us on WhatsApp
               </a>
             </div>
           </GlassCard>
@@ -168,5 +186,4 @@ export function ReturnProcessPage() {
     </div>
   );
 }
-
 

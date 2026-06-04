@@ -19,7 +19,7 @@ export function ContactPage() {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50 py-12">
       <div className="container mx-auto px-4 max-w-[1320px]">
         <div className="text-center mb-12">
-          <h1 className="mb-3">Get in Touch</h1>
+          <h1 className="mb-3">Get in Touch Now</h1>
           <p className="text-[var(--muted-foreground)]">We'd love to hear from you. Send us a message!</p>
         </div>
 
