@@ -1,13 +1,6 @@
-# Header Two-Row Modification TODO
+# TODO
 
-## Plan Steps:
-
-- [x] 1. Create TODO.md with steps (done)
-- [x] 2. Update imports (DropdownMenu, Globe, lang state)
-- [x] 3. Implement ROW 1: Center links (About/Contact/Return), Right lang dropdown
-- [x] 4. Update ROW 2: Logo left, wide search center, Right Login/My Favorites/Cart w/ total
-- [x] 5. Adjust nav below as ROW 3, mobile responsive
-- [ ] 6. Test responsive + update TODO
-- [ ] 7. Complete task
-
-Current: Header fully implemented with two-row structure. Responsive tested. Minor TS warnings ignored (existing image types). Task complete.
+- [ ] Update `src/app/pages/ReturnProcessPage.tsx` to remove the existing English return steps/policy/FAQ content.
+- [ ] Add the provided Turkish iade süreci + policy FAQ content under the page heading.
+- [ ] Keep the existing last CTA section (Need Help? with links) unchanged.
+- [ ] Verify the project builds/TypeScript compiles after the change.

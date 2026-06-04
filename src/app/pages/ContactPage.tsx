@@ -1,6 +1,19 @@
 import { GlassCard } from '../components/GlassCard';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
+const companyDetails = [
+  {
+    label: 'Business Address',
+    value: 'İkitelli OSB Mah. Giyim Sanatkarları 3C Blok- Sk. 3C Blok No: 3C İç Kapı No: 422 Başakşehir / İstanbul',
+  },
+  { label: 'Tax Office', value: 'İkitelli' },
+  { label: 'Tax Identification Number', value: '5641242298' },
+  { label: 'Trade Registry Number', value: '3609045' },
+  { label: 'Phone', value: '+90 553 999 96 20' },
+  { label: 'Registered Email Address', value: 'kiviinternational@hs01.kep.tr' },
+  { label: 'Mersis Number', value: '0564124229800001' },
+];
+
 export function ContactPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50 py-12">
@@ -9,6 +22,29 @@ export function ContactPage() {
           <h1 className="mb-3">Get in Touch</h1>
           <p className="text-[var(--muted-foreground)]">We'd love to hear from you. Send us a message!</p>
         </div>
+
+        <GlassCard className="mb-8">
+          <div className="flex flex-col gap-2 mb-6">
+            <p className="text-sm uppercase tracking-[0.24em] text-[var(--muted-foreground)]">Communication</p>
+            <h2 className="text-2xl md:text-3xl">Kivi International Consulting Industry Internal and External Trade Limited Company</h2>
+          </div>
+
+          <div className="grid gap-4">
+            {companyDetails.map((item, index) => (
+              <div
+                key={item.label}
+                className={`grid gap-2 rounded-xl border border-white/40 bg-white/55 px-4 py-4 md:grid-cols-[240px_minmax(0,1fr)] md:items-start ${
+                  index === companyDetails.length - 1 ? '' : 'shadow-sm'
+                }`}
+              >
+                <div className="text-sm font-semibold tracking-wide text-[var(--muted-foreground)]">
+                  {item.label}
+                </div>
+                <div className="text-sm md:text-base leading-6 break-words">{item.value}</div>
+              </div>
+            ))}
+          </div>
+        </GlassCard>
 
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
           <GlassCard className="text-center">

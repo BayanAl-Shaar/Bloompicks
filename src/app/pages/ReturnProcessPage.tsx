@@ -1,156 +1,144 @@
 import { GlassCard } from '../components/GlassCard';
-import { Package, MessageSquare, RefreshCw, CheckCircle2 } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '../components/ui/accordion';
 
 export function ReturnProcessPage() {
-  const steps = [
-    {
-      icon: MessageSquare,
-      title: 'Initiate Return',
-      description: 'Contact our customer service within 30 days of receiving your order. Provide your order number and reason for return.',
-    },
-    {
-      icon: Package,
-      title: 'Package Your Item',
-      description: 'Carefully pack the item in its original packaging. Include all accessories, tags, and documentation.',
-    },
-    {
-      icon: RefreshCw,
-      title: 'Ship It Back',
-      description: "Use the prepaid shipping label we'll send you. Drop off at any authorized shipping location.",
-    },
-    {
-      icon: CheckCircle2,
-      title: 'Get Your Refund',
-      description: "Once we receive and inspect your return, we'll process your refund within 5-7 business days.",
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-blue-50 py-12">
       <div className="container mx-auto px-4 max-w-[1320px]">
         <div className="text-center mb-12">
-          <h1 className="mb-3">Return Process</h1>
+          <h1 className="mb-3">İade Süreci</h1>
           <p className="text-[var(--muted-foreground)] max-w-2xl mx-auto">
-            We want you to love your purchase! If you're not completely satisfied, here's how to return your items hassle-free.
+            Aldığınız ürünü iade etmek için aşağıdaki adımları ve sık sorulan soruları inceleyebilirsiniz.
           </p>
         </div>
 
-        {/* Return Steps */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <div className="grid md:grid-cols-2 gap-8">
-            {steps.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <GlassCard key={index} className="relative">
-                  <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-r from-[#E87722] to-[#F59E0B] text-white flex items-center justify-center text-xl">
-                    {index + 1}
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 rounded-lg bg-white/50 flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-[var(--primary)]" />
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="mb-2">{step.title}</h3>
-                      <p className="text-[var(--muted-foreground)]">{step.description}</p>
-                    </div>
-                  </div>
-                </GlassCard>
-              );
-            })}
-          </div>
-        </div>
+        <GlassCard className="mb-12">
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="step-1">
+              <AccordionTrigger>Aldığım ürünü nasıl iade edebilirim?</AccordionTrigger>
+              <AccordionContent>
+                <div className="space-y-4">
+                  <p className="text-[var(--muted-foreground)]">
+                    Bloom Picks’te iade süreci oldukça basittir. İade veya iptal talebiniz varsa aşağıdaki adımları takip ederek kolayca başvuruda bulunabilirsiniz:
+                  </p>
+                  <ul className="space-y-3 text-[var(--muted-foreground)]">
+                    <li className="flex items-start gap-2">
+                      <span className="text-[var(--primary)] mt-1">1.</span>
+                      <span>Bize Ulaşın sayfasına gidin.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[var(--primary)] mt-1">2.</span>
+                      <span>Formdaki “Konu” bölümünden İptal/İade Talebi seçeneğini işaretleyin.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[var(--primary)] mt-1">3.</span>
+                      <span>
+                        Ad, e-posta, telefon bilgilerinizi girin ve açıklama kısmında sipariş numaranızla birlikte iade/iptal nedenini belirtin.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[var(--primary)] mt-1">4.</span>
+                      <span>
+                        Formu gönderdikten sonra, müşteri hizmetleri ekibimiz başvurunuzu inceleyerek en geç 24 saat içerisinde sizinle iletişime geçecektir.
+                      </span>
+                    </li>
+                  </ul>
+                  <p className="text-[var(--muted-foreground)]">
+                    İade süreci, müşteri temsilcimizin yönlendirmesiyle birlikte başlatılır ve detaylı şekilde takip edilir. Gerekli onaylar sağlandığında, iade kargo kodu ve tüm adımlar size iletilir.
+                  </p>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
 
-        {/* Return Policy Details */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
-          <GlassCard>
-            <h2 className="mb-6">Return Policy</h2>
-            <div className="space-y-4">
-              <div>
-                <h4 className="mb-2 text-[var(--primary)]">30-Day Return Window</h4>
-                <p className="text-[var(--muted-foreground)]">
-                  You have 30 days from the date of delivery to initiate a return for most items.
-                </p>
-              </div>
-              <div>
-                <h4 className="mb-2 text-[var(--primary)]">Items Must Be Unused</h4>
-                <p className="text-[var(--muted-foreground)]">
-                  Products must be in their original condition with all tags, packaging, and accessories included.
-                </p>
-              </div>
-              <div>
-                <h4 className="mb-2 text-[var(--primary)]">Free Return Shipping</h4>
-                <p className="text-[var(--muted-foreground)]">
-                  We provide a prepaid shipping label for all eligible returns within your country.
-                </p>
-              </div>
-              <div>
-                <h4 className="mb-2 text-[var(--primary)]">Full Refund Guaranteed</h4>
-                <p className="text-[var(--muted-foreground)]">
-                  Receive a full refund to your original payment method once we process your return.
-                </p>
-              </div>
-            </div>
-          </GlassCard>
+            <AccordionItem value="policy-1">
+              <AccordionTrigger>İade politikanız nedir?</AccordionTrigger>
+              <AccordionContent>
+                <ul className="space-y-3 text-[var(--muted-foreground)]">
+                  <li className="flex items-start gap-2">
+                    <span className="text-[var(--primary)] mt-1">•</span>
+                    <span>Ürün tesliminden itibaren 14 gün içinde iade talebi oluşturabilirsiniz.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[var(--primary)] mt-1">•</span>
+                    <span>
+                      Ürün, kullanılmamış, etiketi çıkarılmamış, ambalajı zarar görmemiş ve tüm aksesuarlarıyla eksiksiz olmalıdır.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[var(--primary)] mt-1">•</span>
+                    <span>
+                      Kozmetik, kişisel bakım, iç giyim gibi hijyenik ürünlerin ambalajı açıldıysa iade kabul edilmez.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-[var(--primary)] mt-1">•</span>
+                    <span>
+                      Hasarlı ya da eksik ürünler için, teslimat sırasında mutlaka kargo görevlisiyle tutanak tutulmalıdır.
+                    </span>
+                  </li>
+                </ul>
+              </AccordionContent>
+            </AccordionItem>
 
-          <GlassCard>
-            <h2 className="mb-6">Non-Returnable Items</h2>
-            <p className="text-[var(--muted-foreground)] mb-4">
-              For health and safety reasons, the following items cannot be returned:
-            </p>
-            <ul className="space-y-2">
-              {[
-                'Personal care items (opened)',
-                'Intimate apparel and swimwear',
-                'Perishable goods',
-                'Custom or personalized items',
-                'Digital products',
-                'Gift cards',
-              ].map((item, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <span className="text-[var(--primary)] mt-1">•</span>
-                  <span className="text-[var(--muted-foreground)]">{item}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 p-4 rounded-lg bg-[var(--accent)]">
-              <p className="text-sm text-[var(--accent-foreground)]">
-                <strong>Note:</strong> If you received a damaged or defective item, please contact us immediately. We'll arrange a replacement or full refund at no cost to you.
-              </p>
-            </div>
-          </GlassCard>
-        </div>
+            <AccordionItem value="fee-1">
+              <AccordionTrigger>İade için ücret ödeyecek miyim?</AccordionTrigger>
+              <AccordionContent>
+                <p className="text-[var(--muted-foreground)]">
+                  Hayır. Sistemden aldığınız iade kargo kodu ile anlaşmalı kargo firması üzerinden ücretsiz gönderim yapabilirsiniz. Farklı kargo firmalarıyla yapılan gönderilerde ücret müşteriye aittir.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
 
-        {/* FAQ Section */}
-        <GlassCard>
-          <h2 className="mb-6">Frequently Asked Questions</h2>
-          <div className="space-y-6">
-            <div>
-              <h4 className="mb-2">How long does it take to process a refund?</h4>
-              <p className="text-[var(--muted-foreground)]">
-                Once we receive your return, we'll inspect it and process your refund within 5-7 business days. Depending on your bank or payment provider, it may take an additional 3-5 days for the funds to appear in your account.
-              </p>
-            </div>
-            <div>
-              <h4 className="mb-2">Can I exchange an item instead of returning it?</h4>
-              <p className="text-[var(--muted-foreground)]">
-                Yes! If you'd like to exchange an item for a different size or color, please indicate this when you initiate your return. We'll ship the replacement as soon as we receive your return.
-              </p>
-            </div>
-            <div>
-              <h4 className="mb-2">What if my item was damaged during shipping?</h4>
-              <p className="text-[var(--muted-foreground)]">
-                We're sorry to hear that! Please contact us within 48 hours of delivery with photos of the damage. We'll send a replacement immediately or issue a full refund, whichever you prefer.
-              </p>
-            </div>
-            <div>
-              <h4 className="mb-2">Do you offer international returns?</h4>
-              <p className="text-[var(--muted-foreground)]">
-                Yes, we accept returns from all countries we ship to. Return shipping costs may vary for international orders. Please contact our customer service for specific details.
-              </p>
-            </div>
-          </div>
+            <AccordionItem value="single-1">
+              <AccordionTrigger>Farklı teslimatlarla gelen ürünleri tek seferde iade edebilir miyim?</AccordionTrigger>
+              <AccordionContent>
+                <p className="text-[var(--muted-foreground)]">Evet, yapabilirsiniz.</p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="refund-1">
+              <AccordionTrigger>Ücret iadem ne zaman yapılır?</AccordionTrigger>
+              <AccordionContent>
+                <p className="text-[var(--muted-foreground)]">
+                  Ürün tarafımıza ulaştıktan sonra 1–3 iş günü içinde incelenir. Onay sonrası, ücret iadesi 3–7 iş günü içinde ödemenizi yaptığınız kanalla (kredi kartı, banka transferi vs.) tarafınıza yansıtılır.
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="late-1">
+              <AccordionTrigger>15 günü geçti, yine de iade edebilir miyim?</AccordionTrigger>
+              <AccordionContent>
+                <p className="text-[var(--muted-foreground)]">
+                  Yasal iade süresi 14 gündür. Bu sürenin aşılması durumunda iade kabul edilemez. Ancak ürün kusurluysa 14 gün kuralı dışında da işlem yapılabilir (müşteri hizmetleriyle iletişime geçiniz).
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="invoice-1">
+              <AccordionTrigger>Faturamı kaybettim, nasıl iade yapabilirim?</AccordionTrigger>
+              <AccordionContent>
+                <div className="space-y-4">
+                  <p className="text-[var(--muted-foreground)]">
+                    Bireysel siparişlerde iade işlemi için faturaya sahip olmanız zorunlu değildir. İade başvurunuz sırasında, sipariş numaranız ve iletişim bilgileriniz yeterlidir.
+                  </p>
+                  <p className="text-[var(--muted-foreground)]">
+                    Ancak işlem sürecini hızlandırmak adına, sipariş detaylarınızı ve iade nedeninizi net şekilde Bize Ulaşın formunda belirtmenizi öneririz.
+                  </p>
+                  <p className="text-[var(--muted-foreground)]">
+                    Kurumsal siparişlerde ise iade işlemi için, satıcı adına düzenlenmiş bir iade faturası kesilmesi gerekmektedir. İade talebini oluştururken, açıklama kısmına mutlaka iade faturası numarasını eklemelisiniz.
+                  </p>
+                  <p className="text-[var(--muted-foreground)]">
+                    Müşteri temsilcimiz gerekli kontrol ve yönlendirmeleri sağlayarak süreci sizinle birlikte yönetecektir.
+                  </p>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </GlassCard>
 
         {/* CTA */}
@@ -180,3 +168,5 @@ export function ReturnProcessPage() {
     </div>
   );
 }
+
+
